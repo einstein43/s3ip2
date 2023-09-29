@@ -1,0 +1,45 @@
+.button {
+  padding: 0.5em 1em;
+  border: none;
+  border-radius: 3px;
+  font-weight: 600;
+  opacity: 0.6;
+  transition: 0.3s;
+}
+
+.button:hover {
+  cursor: pointer;
+  background-color: var(--color-primary);
+  border-radius: var(--border-radius);
+  opacity: 1;
+}
+
+/* Themes */
+.dark {
+  color: white;
+  background-color: black;
+}
+
+.light {
+  color: black;
+  background-color: var(--color-grey-secondary);
+}
+
+/* Sizes */
+.small {
+  font-size: 14px;
+}
+.medium {
+  font-size: 16px;
+}
+.large {
+  font-size: 18px;
+}
+
+/* Icon */
+.button__icon {
+  display: grid;
+  grid-template-columns: 12px auto;
+  column-gap: 10px;
+  align-items: center;
+}

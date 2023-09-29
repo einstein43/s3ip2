@@ -1,0 +1,66 @@
+#wrapper {
+  background-color: grey;
+  height: 150px;
+  border-radius: var(--border-radius);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 1fr;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  /* padding: 20px; */
+  align-items: center;
+  justify-content: center;
+}
+
+/* layout */
+.start {
+  grid-area: 1 / 1 / 2 / 2;
+}
+.center {
+  grid-area: 1 / 2 / 2 / 4;
+}
+.end {
+  grid-area: 1 / 4 / 2 / 5;
+}
+
+/* styling */
+
+.description_wrapper {
+  color: var(--color-secondary);
+  font-size: 30px;
+}
+#description_qualifying {
+    font-size: 24px;
+  font-weight: 600;
+  color: var(--color-primary);
+  float: left;
+ 
+  
+}
+.score_hole_wrapper {
+  height: 120px;
+  min-width: 100px;
+}
+
+.score {
+  height: 100px;
+  font-size: 80px;
+  font-weight: 800;
+  color: var(--color-primary);
+  text-align: center;
+ 
+  
+}
+
+#image {
+    float: right;
+    margin-left: 5px;
+    height: 20px;
+    width: 20px;
+    margin-top: 5px;
+}
+.holes {
+  font-size: 18px;
+  color: var(--color-secondary);
+  text-align: center;
+}
