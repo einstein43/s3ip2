@@ -21,7 +21,7 @@ export default function MatchCard() {
           <div id={styles.description_qualifying}>Qualifying <Image id={styles.image} src={check} alt={"qualifying"}></Image></div>
         </div>
       </div>
-      <div className={styles.end}>Handicap</div>
+      <div className={styles.end}>Handicap 14.6 (+0.3)</div>
     </div>
   );
 }
