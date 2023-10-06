@@ -1,4 +1,23 @@
- .main {
-    padding: var(--section-padding-sides);
-    padding-top: var(--section-padding-top);
- }
+.main {
+  padding: var(--section-padding-sides);
+  padding-top: var(--section-padding-top);
+}
+
+.wrapper_div {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 1fr;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  background-color: grey;
+  height: 100vh;
+  justify-items: center;
+  align-items: center;
+}
+
+.news_section {
+  height: 100%;
+  width: 100%;
+  grid-area: 1 / 2 / 2 / 3;
+  background-color: darkgrey;
+}

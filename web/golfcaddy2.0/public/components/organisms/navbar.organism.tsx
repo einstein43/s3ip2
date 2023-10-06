@@ -59,20 +59,17 @@ export const NavBar = () => {
           theme="light"
           icon={{
             src: location,
-            alt: "Route",
+            alt: "Help",
           }}
         >
-          Route
+          Help
         </Button>
         <Button
           size="medium"
           theme="dark"
-          icon={{
-            src: phone,
-            alt: "Telefoon",
-          }}
+        
         >
-          Bellen
+          Logout
         </Button>
       </div>
 

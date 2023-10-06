@@ -2,6 +2,7 @@ import classNames from "classnames";
 import styles from "../../styles/molecules/matchcard.module.css";
 import Image from "next/image";
 import check from "../../assets/check.svg";
+import { Button } from "../atoms/button.atom";
 
 
 
@@ -10,9 +11,10 @@ export default function MatchCard() {
     <div id={styles.wrapper}>
       <div className={classNames(styles.start)}>
         <div className={styles.score_hole_wrapper}>
+          <Button id={styles.score_button} theme={"light"} size={"large"} >View</Button>
           <div className={styles.score}>72</div>
           <div className={styles.holes}>18 Holes</div>
-        </div>
+         </div>
       </div>
       <div className={styles.center}>
         <div className={styles.description_wrapper}>

@@ -10,7 +10,9 @@ import MatchCard from "@/public/components/molecules/matchcard.molecule";
 export default function Home() {
   return (
     <main className={styles.main}>
-     <MatchCard></MatchCard>
+      <div className={styles.wrapper_div}>test1
+        <div className={styles.news_section}>test2</div>
+      </div>
     </main>
   );
 }

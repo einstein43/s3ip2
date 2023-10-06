@@ -1,0 +1,4 @@
+.main {
+    padding: var(--section-padding-sides);
+    padding-top: var(--section-padding-top);
+ }
