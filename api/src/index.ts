@@ -7,6 +7,9 @@ import { GolferController } from "./controllers/golfer.controller";
 import { RoundController } from "./controllers/round.controller";
 import { FlightController } from "./controllers/flight.controller";
 import { PrismaClient } from '@prisma/client'
+import { Golfer } from "./models/golfer.model";
+import { Round } from "./models/round.model";
+import { Flight } from "./models/flight.model";
 const prisma = new PrismaClient()
 
 const app = express();
@@ -35,58 +38,58 @@ const flightController = container.resolve(FlightController);
 {/* GOLFER ENDPOINTS */}
 
 
-app.get("/golfer/all", async (req: Request, res: Response) => {
+app.get("/golfer/all", async (req: Request, res: Response):Promise<Golfer[]> => {
   console.log("get all golfers");
   return await golferController.getAllGolfers(req, res);
 });
 
-app.post("/golfer/new", async (req: Request, res: Response) => {
+app.post("/golfer/new", async (req: Request, res: Response):Promise<void> => {
   return await golferController.createGolfer(req, res);
 });
 
-app.put("/golfer/update", async (req: Request, res: Response) => {
+app.put("/golfer/update", async (req: Request, res: Response):Promise<void> => {
   return await golferController.updateGolferById(req, res);
 });
 
-app.delete("/golfer/delete", async (req: Request, res: Response) => {
+app.delete("/golfer/delete", async (req: Request, res: Response):Promise<void> => {
   return await golferController.deleteGolferById(req, res);
 });
 
-app.get("/golfer", async (req: Request, res: Response) => {
+app.get("/golfer", async (req: Request, res: Response):Promise<void> => {
   return await golferController.getGolferById(req, res);
 });
 
 {/* ROUND ENDPOINTS */}
 
 
-app.get("/rounds/all", async (req: Request, res: Response) => {
+app.get("/rounds/all", async (req: Request, res: Response):Promise<Round[]> => {
   return await roundController.getAllRounds(req, res);
 });
 
-app.post("/rounds/new", async (req: Request, res: Response) => {
+app.post("/rounds/new", async (req: Request, res: Response):Promise<void> => {
   return await roundController.createRound(req, res);
 });
 
-app.put("/rounds/update", async (req: Request, res: Response) => {
+app.put("/rounds/update", async (req: Request, res: Response):Promise<void> => {
   return await roundController.updateRoundById(req, res);
 });
 
  
 {/* FLIGHT ENDPOINTS */}
 
-app.get("flights/all", async (req: Request, res: Response) => {
+app.get("flights/all", async (req: Request, res: Response):Promise<Flight[]> => {
   return await flightController.getAllFlights(req, res);
 });
 
-app.post("flights/new", async (req: Request, res: Response) => {
+app.post("flights/new", async (req: Request, res: Response):Promise<void> => {
   return await flightController.createFlight(req, res);
 });
 
-app.put("flights/update", async (req: Request, res: Response) => {
+app.put("flights/update", async (req: Request, res: Response):Promise<void> => {
   return await flightController.updateFlightById(req, res);
 });
 
-app.delete("flights/delete", async (req: Request, res: Response) => {
+app.delete("flights/delete", async (req: Request, res: Response):Promise<void> => {
   return await flightController.deleteFlightById(req, res);
 });
 
