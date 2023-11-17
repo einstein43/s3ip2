@@ -1,0 +1,137 @@
+.golfer_wrapper {
+  display: grid;
+  font-size: 20px;
+  grid-template-columns: repeat(6, 1fr);
+  text-align: left;
+  grid-template-rows: 1fr;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  border: 1px solid var(--color-primary);
+  height: 75px;
+  align-items: center;
+  padding-left: 10px;
+}
+
+.bottom_wrapper {
+  display: grid;
+  font-size: 20px;
+  grid-template-columns: repeat(1, 1fr);
+  grid-template-rows: repeat(auto, 1fr);
+  grid-column-gap: 10px;
+  grid-row-gap: 10px;
+  border: 1px solid var(--color-primary);
+  padding: 20px;
+}
+
+.top_wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  grid-column-gap: 10px;
+  grid-row-gap: 10px;
+  align-items: center;
+  justify-items: center;
+  border: 1px solid var(--color-primary);
+  padding-bottom: 25px;
+  padding-top: 25px;
+ 
+}
+
+.title {
+  font-size: 50px;
+  margin-bottom: 40px;
+  margin-top: 20px;
+  color: var(--color-primary);
+  text-decoration: underline;
+}
+
+.parent {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+}
+
+.first_place {
+  grid-area: 1 / 2 / 3 / 3;
+  background-color: gold;
+  
+  padding: 10px;
+  border-radius: 8px;
+  min-width: 200px;
+  max-width: 600px;
+  width: 400px;
+}
+
+.second_place {
+  grid-area: 2 / 1 / 4 / 2;
+  background-color: silver;
+  padding: 10px;
+  border-radius: 8px;
+  min-width: 200px;
+  max-width: 600px;
+  width: 400px;
+}
+
+.third_place {
+  grid-area: 2 / 3 / 4 / 4;
+  background-color: #CD7F32;
+  padding: 10px;
+  border-radius: 8px;
+  min-width: 200px;
+  max-width: 600px;
+  width: 400px;
+}
+.golfer_wrapper2 {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(6, auto);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+
+  justify-items: center;
+  text-align: center;
+}
+#user_img {
+  align-self: center;
+  grid-area: 2 / 1 / 3 / 2;
+}
+
+.place1 {
+  grid-area: 1 / 1 / 2 / 2;
+  align-items: center;
+}
+.age_handicap {
+  grid-area: 4 / 1 / 5 / 2;
+  display: grid;
+  grid-template-columns: auto ;
+  
+  width: 100%;
+}
+.age1 {
+  grid-area: 1/1;
+}
+.handicap1 {
+  grid-area: 1/2;
+ 
+}
+.div4 {
+  grid-area: 5 / 1 / 6 / 2;
+}
+
+.name_wrapper {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  width: 100%;
+  
+}
+
+.name1 {
+  grid-area: 1/1;
+
+}
+.name2 {
+  grid-area: 1/2;
+  align-self: flex-start;
+}

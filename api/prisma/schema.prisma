@@ -1,0 +1,63 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model golf_rounds {
+  id          Int          @id @default(autoincrement())
+  golfer_id   Int?
+  round_id    Int?
+  golfers     golfers?     @relation(fields: [golfer_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "golf_rounds_ibfk_1")
+  golf_scores golf_scores? @relation(fields: [round_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "golf_rounds_ibfk_2")
+
+  @@index([golfer_id], map: "golfer_id")
+  @@index([round_id], map: "round_id")
+}
+
+model golf_scores {
+  id          Int           @id @default(autoincrement())
+  golfer_id   Int?
+  course      String?       @db.VarChar(255)
+  date        DateTime?     @db.Date
+  hole1       Int?
+  hole2       Int?
+  hole3       Int?
+  hole4       Int?
+  hole5       Int?
+  hole6       Int?
+  hole7       Int?
+  hole8       Int?
+  hole9       Int?
+  hole10      Int?
+  hole11      Int?
+  hole12      Int?
+  hole13      Int?
+  hole14      Int?
+  hole15      Int?
+  hole16      Int?
+  hole17      Int?
+  hole18      Int?
+  golf_rounds golf_rounds[]
+}
+
+model golfers {
+  id          Int           @id @default(autoincrement())
+  name        String?       @db.VarChar(255)
+  age         Int?
+  handicap    Decimal?      @db.Decimal(5, 2)
+  homecourse  String?       @db.VarChar(255)
+  country     String?       @db.VarChar(255)
+  golf_rounds golf_rounds[]
+}
+
+model flights {
+  id        Int      @id @default(autoincrement())
+  round_id  Int
+  player_id Int
+  score     Int
+  date      DateTime @db.Date
+}

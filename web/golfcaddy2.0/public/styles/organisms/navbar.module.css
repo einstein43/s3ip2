@@ -4,7 +4,7 @@
     grid-template-columns: min-content auto min-content;
     align-items: center;
     justify-items: center;
-    background-color: grey;
+    background-color: rgb(202, 202, 202);
 }
 
 /* Logo */

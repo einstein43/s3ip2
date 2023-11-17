@@ -23,7 +23,7 @@
 .end {
   grid-area: 1 / 4 / 2 / 5;
   font-size: 26px;
-  color: var(--color-tertiery);
+  color: var(--color-secondary);
   font-weight: 500;
   align-self: flex-end;
   margin-bottom: 10px;

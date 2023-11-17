@@ -39,7 +39,7 @@ export const NavBar = () => {
       {/* Links */}
       <ul id={styles.linkContainer}>
         <Link className={styles.link} href={"/"}>
-          Nieuws
+          Leaderboard
         </Link>
         <Link className={styles.link} href={"/wedstrijden"}>
           Wedstrijden
@@ -47,8 +47,8 @@ export const NavBar = () => {
         <Link className={styles.link} href={"/profiel"}>
           Profiel
         </Link>
-        <Link className={styles.link} href={"/instellingen"}>
-          Instellingen
+        <Link className={styles.link} href={"/leaderboard"}>
+          Leaderboard
         </Link>
       </ul>
 

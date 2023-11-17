@@ -1,0 +1,24 @@
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-column-gap: 3px;
+  grid-row-gap: 3px;
+  min-width: 300px;
+
+}
+
+.score {
+    background-color: #38bbed;
+    border-radius: 2px;
+    justify-content: center;
+    align-items: center;
+    height: 60px;
+    width: 60px;
+    font-size: 28px;
+}
+
+.score:hover {
+    background-color: #2b8dbd;
+    cursor: pointer;
+}
