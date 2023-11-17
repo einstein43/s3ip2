@@ -18,10 +18,10 @@ export class GolferController {
     this.createGolfer = this.createGolfer.bind(this);
   }
 
-  public async getAllGolfers(req: Request, res: Response): Promise<Golfer[]> {
+  public async getAllGolfers(req: Request, res: Response) {
     const golfers: Golfer[] = await this.golferService.getAllGolfers();
     res.status(200).send(golfers);
-    return golfers;
+     
   }
 
    public async createGolfer(req: Request, res: Response): Promise<void> {
