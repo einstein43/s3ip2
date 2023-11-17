@@ -6,11 +6,11 @@ import bodyParser from "body-parser";
 import { GolferController } from "./controllers/golfer.controller";
 import { RoundController } from "./controllers/round.controller";
 import { FlightController } from "./controllers/flight.controller";
-import { PrismaClient } from '@prisma/client'
+import { PrismaClient } from "@prisma/client";
 import { Golfer } from "./models/golfer.model";
 import { Round } from "./models/round.model";
 import { Flight } from "./models/flight.model";
-const prisma = new PrismaClient()
+const prisma = new PrismaClient();
 
 const app = express();
 app.use(cors());
@@ -22,7 +22,7 @@ app.use(
   cors({
     origin: "http://localhost:3000", // frontend domein
     methods: ["GET", "POST", "PUT", "DELETE"], // toegestane methodes
-    allowedHeaders: ["Content-Type", "Authorization"],  // toegestane headers 
+    allowedHeaders: ["Content-Type", "Authorization"], // toegestane headers
   })
 );
 express.json();
@@ -34,64 +34,65 @@ const golferController = container.resolve(GolferController);
 const roundController = container.resolve(RoundController);
 const flightController = container.resolve(FlightController);
 
+{
+  /* GOLFER ENDPOINTS */
+}
 
-{/* GOLFER ENDPOINTS */}
-
-
-app.get("/golfer/all", async (req: Request, res: Response):Promise<void> => {
+app.get("/golfer/all", async (req: Request, res: Response) => {
   console.log("get all golfers");
-   await golferController.getAllGolfers(req, res);
+  await golferController.getAllGolfers(req, res);
 });
 
-app.post("/golfer/new", async (req: Request, res: Response):Promise<void> => {
-    await golferController.createGolfer(req, res);
+app.post("/golfer/new", async (req: Request, res: Response) => {
+  await golferController.createGolfer(req, res);
 });
 
-app.put("/golfer/update", async (req: Request, res: Response):Promise<void> => {
-    await golferController.updateGolferById(req, res);
+app.put("/golfer/update", async (req: Request, res: Response) => {
+  await golferController.updateGolferById(req, res);
 });
 
-app.delete("/golfer/delete", async (req: Request, res: Response):Promise<void> => {
-    await golferController.deleteGolferById(req, res);
+app.delete("/golfer/delete", async (req: Request, res: Response) => {
+  await golferController.deleteGolferById(req, res);
 });
 
-app.get("/golfer", async (req: Request, res: Response):Promise<void> => {
-    await golferController.getGolferById(req, res);
+app.get("/golfer", async (req: Request, res: Response) => {
+  await golferController.getGolferById(req, res);
 });
 
-{/* ROUND ENDPOINTS */}
+{
+  /* ROUND ENDPOINTS */
+}
 
-
-app.get("/rounds/all", async (req: Request, res: Response):Promise<void> => {
-   await roundController.getAllRounds(req, res);
+app.get("/rounds/all", async (req: Request, res: Response) => {
+  await roundController.getAllRounds(req, res);
 });
 
-app.post("/rounds/new", async (req: Request, res: Response):Promise<void> => {
-    await roundController.createRound(req, res);
+app.post("/rounds/new", async (req: Request, res: Response) => {
+  await roundController.createRound(req, res);
 });
 
-app.put("/rounds/update", async (req: Request, res: Response):Promise<void> => {
-    await roundController.updateRoundById(req, res);
+app.put("/rounds/update", async (req: Request, res: Response) => {
+  await roundController.updateRoundById(req, res);
 });
 
- 
-{/* FLIGHT ENDPOINTS */}
+{
+  /* FLIGHT ENDPOINTS */
+}
 
-app.get("flights/all", async (req: Request, res: Response):Promise<void> => {
-    await flightController.getAllFlights(req, res);
+app.get("flights/all", async (req: Request, res: Response) => {
+  await flightController.getAllFlights(req, res);
 });
 
-app.post("flights/new", async (req: Request, res: Response):Promise<void> => {
-    await flightController.createFlight(req, res);
+app.post("flights/new", async (req: Request, res: Response) => {
+  await flightController.createFlight(req, res);
 });
 
-app.put("flights/update", async (req: Request, res: Response):Promise<void> => {
-    await flightController.updateFlightById(req, res);
+app.put("flights/update", async (req: Request, res: Response) => {
+  await flightController.updateFlightById(req, res);
 });
 
-app.delete("flights/delete", async (req: Request, res: Response):Promise<void> => {
-    await flightController.deleteFlightById(req, res);
+app.delete("flights/delete", async (req: Request, res: Response) => {
+  await flightController.deleteFlightById(req, res);
 });
-
 
 app.listen(3001, () => console.log("app listening on port 3001"));
