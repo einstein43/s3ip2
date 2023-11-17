@@ -40,7 +40,8 @@ const flightController = container.resolve(FlightController);
 
 app.get("/golfer/all", async (req: Request, res: Response) => {
   console.log("get all golfers");
-  await golferController.getAllGolfers(req, res);
+ const golfers =  await golferController.getAllGolfers(req, res);
+  return golfers;
 });
 
 app.post("/golfer/new", async (req: Request, res: Response)  => {
