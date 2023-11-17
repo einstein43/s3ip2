@@ -24,26 +24,26 @@ export class GolferController {
      
   }
 
-   public async createGolfer(req: Request, res: Response): Promise<void> {
+   public async createGolfer(req: Request, res: Response)  {
     const golfer = req.body;
     await this.golferService.createGolfer(golfer);
     res.status(200).send("controller succes -> id: " + golfer.id);
   }
 
-  public async getGolferById(req: Request, res: Response): Promise<void> {
+  public async getGolferById(req: Request, res: Response)  {
     const id = req.body.id;
     const golfer = await this.golferService.getGolferById(id);
     res.status(200).send(golfer);
   }
 
-  public async updateGolferById(req: Request, res: Response): Promise<void> {
+  public async updateGolferById(req: Request, res: Response)  {
     const id = req.body.id;
     const golfer = req.body.golfer;
     await this.golferService.updateGolferById(id, golfer);
     res.status(200).send("golfer updated with id: " + id);
   }
 
-  public async deleteGolferById(req: Request, res: Response): Promise<void> {
+  public async deleteGolferById(req: Request, res: Response)  {
     const id = req.body.id;
     await this.golferService.deleteGolferById(id);
     res.status(200).send("golfer deleted with id: " + id);
