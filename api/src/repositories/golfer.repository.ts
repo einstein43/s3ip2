@@ -7,7 +7,7 @@ const prisma = new PrismaClient();
 export default class GolferRepository {
   constructor() {}
 
-  public async getAllGolfers() {
+  public async getAllGolfers():Promise<Golfer[]> {
     try {
       const golfers = await prisma.golfers.findMany({        
             });

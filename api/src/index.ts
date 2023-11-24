@@ -38,10 +38,11 @@ const flightController = container.resolve(FlightController);
   /* GOLFER ENDPOINTS */
 }
 
-app.get("/golfer/all", async (req: Request, res: Response) => {
+app.get("/golfer/all", async (req: Request, res: Response):Promise<Golfer[]> => {
   console.log("get all golfers");
   const golfers = await golferController.getAllGolfers(req, res);
   res.status(200).json(golfers);
+  return golfers;
 });
 
 app.post("/golfer/new", async (req: Request, res: Response) => {
