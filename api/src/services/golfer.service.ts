@@ -21,7 +21,7 @@ export class GolferService {
   }
 
   public async getAllGolfers() {
-    const golfers: Golfer[] = await this.golferRepository.getAllGolfers();
+    const golfers = await this.golferRepository.getAllGolfers();
     return golfers;
   }
 

@@ -19,7 +19,7 @@ export class GolferController {
   }
 
   public async getAllGolfers(req: Request, res: Response) {
-    const golfers: Golfer[] = await this.golferService.getAllGolfers();
+    const golfers = await this.golferService.getAllGolfers();
     res.status(200).send(golfers);
      
   }
