@@ -40,9 +40,15 @@ const flightController = container.resolve(FlightController);
 
 app.get("/golfer/all", async (req: Request, res: Response) => {
   console.log("get all golfers");
-  const golfers = await golferController.getAllGolfers(req, res);
-  res.status(200).json(golfers);
+  try {
+    const golfers = await golferController.getAllGolfers(req, res);
+    res.status(200).json(golfers);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Internal Server Error");
+  }
 });
+
 
 
 app.post("/golfer/new", async (req: Request, res: Response) => {
