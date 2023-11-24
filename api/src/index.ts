@@ -41,8 +41,7 @@ const flightController = container.resolve(FlightController);
 app.get("/golfer/all", async (req: Request, res: Response) => {
   console.log("get all golfers");
  const golfers =  await golferController.getAllGolfers(req, res);
-  return golfers;
-});
+res.status(200).json(golfers);});
 
 app.post("/golfer/new", async (req: Request, res: Response)  => {
   return await golferController.createGolfer(req, res);

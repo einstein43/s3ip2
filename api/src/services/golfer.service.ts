@@ -20,7 +20,7 @@ export class GolferService {
     this.updateGolferById = this.updateGolferById.bind(this);
   }
 
-  public async getAllGolfers(): Promise<Golfer[]> {
+  public async getAllGolfers() {
     const golfers: Golfer[] = await this.golferRepository.getAllGolfers();
     return golfers;
   }
