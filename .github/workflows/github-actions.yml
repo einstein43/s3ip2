@@ -1,4 +1,5 @@
 name: GitHub Actions Demo
+<<<<<<< Updated upstream
 run-name: Github actions CI/CD S3IP
 =======
 run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
