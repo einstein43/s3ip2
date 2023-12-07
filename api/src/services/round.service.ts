@@ -24,7 +24,7 @@ export class RoundService {
     const Rounds: Round[] = await this.roundRepository.getAllRounds();
     return Rounds;
   }
-
+ 
   public async createRound(round: Round): Promise<void> {
     await this.roundRepository.createRound(round);
   }

@@ -14,7 +14,7 @@ export default class roundRepository {
       console.log("rounds retrieved");
       return rounds;
     } catch (error) {
-      console.error("could not find rounds in repository");
+      console.error("could not find rounds in repository"); 
       throw new Error("Failed to retrieve rounds");
     }
   }
@@ -46,15 +46,14 @@ export default class roundRepository {
           golfer_id: round.golfer_id,
           round_id: round.round_id,
           golfers: round.golfers,
-          golf_scores: round.golf_scores, 
-
+          golf_scores: round.golf_scores,
         },
       });
-      console.log("round created");
-    } catch (error) {
-      console.error(error);
-    }
   
+    } catch (error) {
+      console.error("could not create round in repository");
+      throw new Error("Failed to create round");
+    }
   }
  
 

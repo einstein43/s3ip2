@@ -6,4 +6,4 @@ export interface Round {
    golf_scores: any;
 
   }
-  
+   

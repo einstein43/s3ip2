@@ -39,17 +39,8 @@ const flightController = container.resolve(FlightController);
 }
 
 app.get("/golfer/all", async (req: Request, res: Response) => {
-  console.log("get all golfers");
-  try {
-    const golfers = await golferController.getAllGolfers(req, res);
-    res.status(200).json(golfers);
-  } catch (error) {
-    console.error(error);
-    res.status(500).send("Internal Server Error");
-  }
+  return await golferController.getAllGolfers(req, res);
 });
-
-
 
 app.post("/golfer/new", async (req: Request, res: Response) => {
   return await golferController.createGolfer(req, res);
@@ -81,6 +72,9 @@ app.post("/rounds/new", async (req: Request, res: Response) => {
 
 app.put("/rounds/update", async (req: Request, res: Response) => {
   return await roundController.updateRoundById(req, res);
+});
+app.delete("/rounds/delete", async (req: Request, res: Response) => {
+  return await roundController.deleteRoundById(req, res);
 });
 
 {
