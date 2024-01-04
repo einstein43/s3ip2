@@ -12,6 +12,24 @@
     width: 200px;
 }
 
+.button {
+    padding: 0.5em 1em;
+    border: none;
+    border-radius: 3px;
+    font-weight: 600;
+    opacity: 0.6;
+    transition: 0.3s;
+    color: white;
+    background-color: black;
+  }
+  
+  .button:hover {
+    cursor: pointer;
+    background-color: var(--color-primary);
+    border-radius: var(--border-radius);
+    opacity: 1;
+  }
+
 /* Links */
 #linkContainer {
     display: inline-grid;

@@ -29,6 +29,11 @@ export const NavBar = () => {
     }
   };
 
+  const handleLogout = () => {
+    localStorage.removeItem("golfer");
+     window.location.href = "/";
+  };
+
   return (
     <div id={styles.container}>
       {/* Logo */}
@@ -38,18 +43,18 @@ export const NavBar = () => {
 
       {/* Links */}
       <ul id={styles.linkContainer}>
-        <Link className={styles.link} href={"/"}>
-          Leaderboard
-        </Link>
-        <Link className={styles.link} href={"/wedstrijden"}>
+        <a className={styles.link} href={"/"}>
+          Home
+        </a>
+        <a className={styles.link} href={"/wedstrijden"}>
           Wedstrijden
-        </Link>
-        <Link className={styles.link} href={"/profiel"}>
+        </a>
+        <a className={styles.link} href={"/profiel"}>
           Profiel
-        </Link>
-        <Link className={styles.link} href={"/leaderboard"}>
+        </a>
+        <a className={styles.link} href={"/leaderboard"}>
           Leaderboard
-        </Link>
+        </a>
       </ul>
 
       {/* Buttons */}
@@ -64,13 +69,7 @@ export const NavBar = () => {
         >
           Help
         </Button>
-        <Button
-          size="medium"
-          theme="dark"
-        
-        >
-          Logout
-        </Button>
+        <button onClick={() => handleLogout()}>Logout</button>
       </div>
 
       {/* Hamburger button */}

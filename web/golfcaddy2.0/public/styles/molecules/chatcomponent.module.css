@@ -1,0 +1,19 @@
+#message_div {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+    grid-template-rows: repeat(auto, 1fr);
+  column-width: auto;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+   justify-items: center;
+  align-items: center;
+  width: 500px;
+ }
+
+#message_image_div {
+  grid-area: 1 / 1 / 2 / 2;
+  width: 200px;
+ }
+#message_text {
+  grid-area: 1 / 2 / 2 / 3;
+}

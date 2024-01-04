@@ -14,11 +14,15 @@
   "dependencies": {
     "@babel/plugin-syntax-jsx": "^7.23.3",
     "@babel/preset-react": "^7.23.3",
+    "@types/socket.io-client": "^3.0.0",
     "classnames": "^2.3.2",
     "next": "latest",
     "react": "latest",
     "react-dom": "latest",
     "react-scripts": "^5.0.1",
+    "socket-io": "^1.0.0",
+    "socket.io": "^4.7.2",
+    "socket.io-client": "^4.7.2",
     "ts-node": "^10.9.1"
   },
   "devDependencies": {

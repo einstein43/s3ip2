@@ -1,36 +1,54 @@
-.main {
-  color: black;
-}
-
 .wrapper_div {
-  margin-left: 100px;
-}
-
-
-/* .wrapper_div {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  grid-template-rows: 1fr;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(4, 1fr);
   grid-column-gap: 0px;
   grid-row-gap: 0px;
   background-color: rgb(167, 167, 167);
   height: 100vh;
   justify-items: center;
   align-items: center;
-} */
-
-/* .news_section {
-  height: 100%;
-  width: 100%;
-  grid-area: 1 / 2 / 2 / 6;
   background-color: darkgrey;
-  align-items: center;
-  justify-items: center;
 }
-.news_section_grid {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  grid-template-rows: repeat(3, 1fr);
-  grid-column-gap: 0px;
-  grid-row-gap: 0px;
-} */
+
+#ngf_div {
+  grid-area: 2 / 2 / 3 / 3;
+  
+  font-size: 40px;
+  position: relative;
+  overflow-y: auto;
+  height: 600px;
+  max-height: 600px; /* Set a fixed height for the container */
+  overflow-y: auto;
+}
+
+#welcome_div {
+  grid-area: 1 / 1 / 2 / 4;
+  background-color: green;
+  font-size: 60px;
+}
+
+.label {
+  position: sticky;
+  top: 0;
+  background-color: #fff; /* Add a background color for better visibility */
+  z-index: 1;
+}
+
+#ngf_top {
+  position: sticky;
+  top: 0;
+  background-color: #fff; /* Add a background color for better visibility */
+  z-index: 1;
+  height: 130px;
+}
+
+.golfers_list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.golfers_list li {
+  margin-bottom: 8px;
+}

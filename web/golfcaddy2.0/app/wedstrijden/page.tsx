@@ -35,10 +35,10 @@ export default function Wedstrijden() {
   const [golfRounds, setGolfRounds] = useState<GolfRound[]>([]);
 
   useEffect(() => {
-    // Function to fetch golf rounds from API
+  
     const fetchGolfRounds = async () => {
       try {
-        const response = await fetch("http://localhost:3001/rounds/all"); // Replace with your API URL
+        const response = await fetch("http://localhost:3001/rounds/all"); 
         const data = await response.json();
         setGolfRounds(data);
       } catch (error) {
