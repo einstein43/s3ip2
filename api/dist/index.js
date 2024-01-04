@@ -41,8 +41,14 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 require("reflect-metadata");
 var express_1 = __importDefault(require("express"));
+var tsyringe_1 = require("tsyringe");
 var cors_1 = __importDefault(require("cors"));
 var body_parser_1 = __importDefault(require("body-parser"));
+var golfer_controller_1 = require("./controllers/golfer.controller");
+var round_controller_1 = require("./controllers/round.controller");
+var flight_controller_1 = require("./controllers/flight.controller");
+var client_1 = require("@prisma/client");
+var prisma = new client_1.PrismaClient();
 var app = (0, express_1.default)();
 app.use((0, cors_1.default)());
 app.use(body_parser_1.default.json());
@@ -52,14 +58,136 @@ app.options("*", (0, cors_1.default)());
 app.use((0, cors_1.default)({
     origin: "http://localhost:3000",
     methods: ["GET", "POST", "PUT", "DELETE"],
-    allowedHeaders: ["Content-Type", "Authorization"], // Specify the allowed request headers
+    allowedHeaders: ["Content-Type", "Authorization"], // toegestane headers
 }));
 express_1.default.json();
 app.use((0, cors_1.default)());
 app.options("*", (0, cors_1.default)());
+var golferController = tsyringe_1.container.resolve(golfer_controller_1.GolferController);
+var roundController = tsyringe_1.container.resolve(round_controller_1.RoundController);
+var flightController = tsyringe_1.container.resolve(flight_controller_1.FlightController);
+{
+    /* GOLFER ENDPOINTS */
+}
+app.post("login", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0: return [4 /*yield*/, golferController.login(req, res)];
+            case 1: return [2 /*return*/, _a.sent()];
+        }
+    });
+}); });
 app.get("/golfer/all", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     return __generator(this, function (_a) {
-        return [2 /*return*/];
+        switch (_a.label) {
+            case 0: return [4 /*yield*/, golferController.getAllGolfers(req, res)];
+            case 1: return [2 /*return*/, _a.sent()];
+        }
+    });
+}); });
+app.post("/golfer/new", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0: return [4 /*yield*/, golferController.createGolfer(req, res)];
+            case 1: return [2 /*return*/, _a.sent()];
+        }
+    });
+}); });
+app.put("/golfer/update", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0: return [4 /*yield*/, golferController.updateGolferById(req, res)];
+            case 1: return [2 /*return*/, _a.sent()];
+        }
+    });
+}); });
+app.delete("/golfer/delete", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0: return [4 /*yield*/, golferController.deleteGolferById(req, res)];
+            case 1: return [2 /*return*/, _a.sent()];
+        }
+    });
+}); });
+app.get("/golfer/:id", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var golferId;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                golferId = parseInt(req.params.id);
+                return [4 /*yield*/, golferController.getGolferById(golferId, res)];
+            case 1: return [2 /*return*/, _a.sent()];
+        }
+    });
+}); });
+{
+    /* ROUND ENDPOINTS */
+}
+app.get("/rounds/all", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0: return [4 /*yield*/, roundController.getAllRounds(req, res)];
+            case 1: return [2 /*return*/, _a.sent()];
+        }
+    });
+}); });
+app.post("/rounds/new", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0: return [4 /*yield*/, roundController.createRound(req, res)];
+            case 1: return [2 /*return*/, _a.sent()];
+        }
+    });
+}); });
+app.put("/rounds/update", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0: return [4 /*yield*/, roundController.updateRoundById(req, res)];
+            case 1: return [2 /*return*/, _a.sent()];
+        }
+    });
+}); });
+app.delete("/rounds/delete", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0: return [4 /*yield*/, roundController.deleteRoundById(req, res)];
+            case 1: return [2 /*return*/, _a.sent()];
+        }
+    });
+}); });
+{
+    /* FLIGHT ENDPOINTS */
+}
+app.get("flights/all", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0: return [4 /*yield*/, flightController.getAllFlights(req, res)];
+            case 1: return [2 /*return*/, _a.sent()];
+        }
+    });
+}); });
+app.post("flights/new", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0: return [4 /*yield*/, flightController.createFlight(req, res)];
+            case 1: return [2 /*return*/, _a.sent()];
+        }
+    });
+}); });
+app.put("flights/update", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0: return [4 /*yield*/, flightController.updateFlightById(req, res)];
+            case 1: return [2 /*return*/, _a.sent()];
+        }
+    });
+}); });
+app.delete("flights/delete", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0: return [4 /*yield*/, flightController.deleteFlightById(req, res)];
+            case 1: return [2 /*return*/, _a.sent()];
+        }
     });
 }); });
 app.listen(3001, function () { return console.log("app listening on port 3001"); });

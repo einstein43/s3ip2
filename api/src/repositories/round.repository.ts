@@ -9,7 +9,7 @@ export default class roundRepository {
 
   public async getAllRounds(): Promise<any> {
     try {
-      const rounds = await prisma.golf_rounds.findMany({        
+      const rounds = await prisma.golf_scores.findMany({        
             });
       console.log("rounds retrieved");
       return rounds;

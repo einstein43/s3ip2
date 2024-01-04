@@ -38,13 +38,19 @@ const flightController = container.resolve(FlightController);
   /* GOLFER ENDPOINTS */
 }
 
+app.post("/register", async (req: Request, res: Response) => {
+  return await golferController.createGolfer(req, res);
+});
+ 
+app.post("/login", async (req: Request, res: Response) => {
+   return await golferController.login(req, res);
+});
+
+
 app.get("/golfer/all", async (req: Request, res: Response) => {
   return await golferController.getAllGolfers(req, res);
 });
 
-app.post("/golfer/new", async (req: Request, res: Response) => {
-  return await golferController.createGolfer(req, res);
-});
 
 app.put("/golfer/update", async (req: Request, res: Response) => {
   return await golferController.updateGolferById(req, res);
@@ -54,8 +60,10 @@ app.delete("/golfer/delete", async (req: Request, res: Response) => {
   return await golferController.deleteGolferById(req, res);
 });
 
-app.get("/golfer", async (req: Request, res: Response) => {
-  return await golferController.getGolferById(req, res);
+app.get("/golfer/:id", async (req: Request, res: Response) => {
+  const golferId = parseInt(req.params.id);
+
+  return await golferController.getGolferById(golferId, res);
 });
 
 {

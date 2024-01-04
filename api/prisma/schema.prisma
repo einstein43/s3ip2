@@ -51,6 +51,8 @@ model golfers {
   handicap    Decimal?      @db.Decimal(5, 2)
   homecourse  String?       @db.VarChar(255)
   country     String?       @db.VarChar(255)
+  ngf         Int?
+  password    String?       @db.VarChar(255)
   golf_rounds golf_rounds[]
 }
 
@@ -60,4 +62,14 @@ model flights {
   player_id Int
   score     Int
   date      DateTime @db.Date
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model competitions {
+  comp_id   Int
+  flight_id Int
+  date      Int
+  course    Int
+
+  @@ignore
 }

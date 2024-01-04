@@ -3,7 +3,7 @@
 import { container, inject, injectable } from "tsyringe";
 import { Golfer } from "../models/golfer.model";
 import GolferRepository from "../repositories/golfer.repository";
-
+import bcrypt from "bcrypt";
 container.register("IGolferRepository", {
   useClass: GolferRepository,
 });
@@ -18,6 +18,27 @@ export class GolferService {
     this.getGolferById = this.getGolferById.bind(this);
     this.deleteGolferById = this.deleteGolferById.bind(this);
     this.updateGolferById = this.updateGolferById.bind(this);
+    this.login = this.login.bind(this);
+  }
+
+  public async login(ngf: number, password: string): Promise<string> {
+    const storedHashedPassword = await this.golferRepository.login(ngf);
+    const isPasswordValid = await bcrypt.compare(
+      password,
+      storedHashedPassword
+    );
+    console.log("service: password valid: " + isPasswordValid);
+    if (isPasswordValid) {
+      return "login successful";
+    } else {
+      return "password incorrect";
+    }
+  }
+
+  public async createGolfer(ngf: number, password: string): Promise<void> {
+    const hashedPassword = await bcrypt.hash(password, 10);
+    await this.golferRepository.createGolfer(ngf, hashedPassword);
+    console.log("service: golfer created");
   }
 
   public async getAllGolfers() {
@@ -26,14 +47,9 @@ export class GolferService {
     return golfers;
   }
 
-  public async createGolfer(golfer: Golfer): Promise<void> {
-    await this.golferRepository.createGolfer(golfer);
-    console.log("service: golfer created");
-  }
-
-  public async getGolferById(id: string): Promise<Golfer> {
+  public async getGolferById(id: number): Promise<Golfer> {
     const golfer: Golfer = await this.golferRepository.getGolferById(id);
-    console.log("service: unique golfer retrieved");
+    console.log("service: unique golfer retrieved" + golfer);
     return golfer;
   }
 
@@ -44,6 +60,6 @@ export class GolferService {
 
   public async deleteGolferById(id: number): Promise<void> {
     await this.golferRepository.deleteGolferById(id);
-    console.log("service: golfer deleted")
+    console.log("service: golfer deleted");
   }
 }

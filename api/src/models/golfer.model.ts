@@ -9,4 +9,6 @@ export interface Golfer {
     homecourse: string | null;
     country: string | null;
     golf_rounds?: GolfRound[];
+    ngf: number | null;
+    password: string | null;
    }

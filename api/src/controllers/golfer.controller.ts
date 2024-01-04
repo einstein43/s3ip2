@@ -3,7 +3,7 @@ import { container, inject, injectable } from "tsyringe";
 // import { IGolferController } from "../interfaces/golfer.interface";
 import { Golfer } from "../models/golfer.model";
 import { GolferService } from "../services/golfer.service";
-
+import bcrypt from "bcrypt";
 container.register("IGolferService", {
   useClass: GolferService,
 });
@@ -16,7 +16,33 @@ export class GolferController {
     this.updateGolferById = this.updateGolferById.bind(this);
     this.deleteGolferById = this.deleteGolferById.bind(this);
     this.createGolfer = this.createGolfer.bind(this);
+    this.login = this.login.bind(this);
   }
+
+  public async login(req: Request, res: Response) {
+    try {
+      const ngf = parseInt(req.body.ngf);
+      const password = req.body.password;
+
+      const loginMessage = await this.golferService.login(ngf, password);
+      res.status(200).send(loginMessage);
+      console.log("controller: golfer logged in");
+      return loginMessage;
+    } catch (error) {
+      console.error(error);
+      res.status(500).send("error in controller");
+    }
+  }
+
+
+
+
+
+
+
+
+
+
 
   public async getAllGolfers(req: Request, res: Response) {
     try {
@@ -29,15 +55,15 @@ export class GolferController {
     }
   }
 
-  public async getGolferById(req: Request, res: Response) {
+  public async getGolferById(id: number, res: Response) {
     try {
-      const id = req.body.id;
       const golfer = await this.golferService.getGolferById(id);
       res.status(200).send(golfer);
       console.log("controller: unique golfer retrieved   id=" + id);
+      return golfer;
     } catch (error) {
       console.error(error);
-      res.status(500).send("Internal Server Error");
+      res.status(500).send("error in controller");
     }
   }
 
@@ -68,11 +94,12 @@ export class GolferController {
 
   public async createGolfer(req: Request, res: Response) {
     try {
-      const golfer = req.body;
-      await this.golferService.createGolfer(golfer);
-      res.status(200).send("controller: golfer created   id= " + golfer.id);
-      console.log("controller: golfer created   id= " + golfer.id);
-    } catch (error) {
+      const ngf = parseInt(req.body.ngf);
+      const password = req.body.password; 
+      await this.golferService.createGolfer(ngf, password);
+      res.status(200).send("controller: golfer created   id= " + ngf);
+      console.log("controller: golfer created   id= " + password);
+    } catch (error) { 
       console.error(error);
       res.status(500).send("Internal Server Error");
     }
