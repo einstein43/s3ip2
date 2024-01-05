@@ -1,11 +1,9 @@
 import { GolfRound } from "./golfround.model";
 
 export interface GolfScore {
-    id: number;
-    golfer_id?: number | null;
-    course?: string | null;
-    date?: Date | null;
-    hole1?: number | null;
+     golfer_id?: number | null;
+      golf_round_id?: number | null;
+     hole1?: number | null;
     hole2?: number | null;
     hole3?: number | null;
     hole4?: number | null;
@@ -23,6 +21,5 @@ export interface GolfScore {
     hole16?: number | null;
     hole17?: number | null;
     hole18?: number | null;
-    golf_rounds: GolfRound[];
-  }
+   }
   

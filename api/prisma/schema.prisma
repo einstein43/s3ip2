@@ -45,15 +45,17 @@ model golf_scores {
 }
 
 model golfers {
-  id          Int           @id @default(autoincrement())
-  name        String?       @db.VarChar(255)
-  age         Int?
-  handicap    Decimal?      @db.Decimal(5, 2)
-  homecourse  String?       @db.VarChar(255)
-  country     String?       @db.VarChar(255)
-  ngf         Int?
-  password    String?       @db.VarChar(255)
-  golf_rounds golf_rounds[]
+  id               Int           @id @default(autoincrement())
+  name             String?       @db.VarChar(255)
+  age              Int?
+  handicap         Decimal?      @db.Decimal(5, 2)
+  homecourse       String?       @db.VarChar(255)
+  country          String?       @db.VarChar(255)
+  ngf              Int?
+  password         String?       @db.VarChar(255)
+  currentmatch_id  Int?
+  currentflight_id Int?
+  golf_rounds      golf_rounds[]
 }
 
 model flights {
@@ -70,6 +72,15 @@ model competitions {
   flight_id Int
   date      Int
   course    Int
+
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model courses {
+  course_id Int
+  country   String @db.VarChar(255)
+  par       Int
 
   @@ignore
 }

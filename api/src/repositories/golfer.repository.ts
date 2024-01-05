@@ -53,7 +53,7 @@ export default class GolferRepository {
       const golfers = await prisma.golfers.findMany({});
       console.log("repository: golfers retrieved");
       return golfers;
-    } catch (error) {
+     } catch (error) {
       console.error("could not find golfers in repository");
       throw new Error("Failed to retrieve golfers");
     }

@@ -11,4 +11,6 @@ export interface Golfer {
     golf_rounds?: GolfRound[];
     ngf: number | null;
     password: string | null;
+    currentmatch_id: number | null ;
+    currentflight_id: number | null;
    }
