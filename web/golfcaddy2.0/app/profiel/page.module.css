@@ -1,0 +1,19 @@
+#login_button {
+    color: var(--color-primary);
+    
+}
+#login_text {
+    grid-area: 1 / 2 / 2 / 3;
+}
+#wrapper_div {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    background-color: rgb(167, 167, 167);
+    height: 100vh;
+    justify-items: center;
+    align-items: center;
+    background-color: darkgrey;
+}

@@ -15,16 +15,8 @@ import ChatComponent from "@/public/components/molecules/ChatComponent";
 import Link from "next/link";
 import { redirect } from "next/dist/server/api-utils";
 import { useRouter } from 'next/router';
-interface Golfer {
-  id: number;
-  name: string;
-  age: number;
-  handicap: number;
-  homecourse: string;
-  country: string;
-  golf_rounds: number;
-  ngf: number;
-}
+import { Golfer } from "@/public/models/golfer.model";
+ 
 
 export default function Home() {
   const [searchTerm, setSearchTerm] = useState<string>("");

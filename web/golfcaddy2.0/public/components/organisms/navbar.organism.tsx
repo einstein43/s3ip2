@@ -14,24 +14,22 @@ import Link from "next/link";
 export const NavBar = () => {
   // State
   const [menuOpen, setMenuOpen] = useState<boolean>(false);
+  const [ngf, setNgf] = useState<number>();
 
-  // Fn - handle click
-  const handleClick = (id: string) => {
-    // Get element
-    const el = document.getElementById(id);
 
-    // If element exists
-    if (el) {
-      // Scroll to element
-      el.scrollIntoView({
-        behavior: "smooth",
-      });
-    }
-  };
+async function getNgf() {
+  const currentUser = await localStorage.getItem("golfer");
+  const user = JSON.parse(currentUser!);
+  setNgf(user.ngf);
+}
+
+
+
+ 
 
   const handleLogout = () => {
     localStorage.removeItem("golfer");
-     window.location.href = "/";
+    window.location.href = "/";
   };
 
   return (
@@ -46,10 +44,10 @@ export const NavBar = () => {
         <a className={styles.link} href={"/"}>
           Home
         </a>
-        <a className={styles.link} href={"/wedstrijden"}>
+        <a className={styles.link} href={`/wedstrijden/${ngf}`} onClick={() => getNgf()}>
           Wedstrijden
         </a>
-        <a className={styles.link} href={"/profiel"}>
+        <a className={styles.link} href={`/profiel/${ngf}`} onClick={() => getNgf()}>
           Profiel
         </a>
         <a className={styles.link} href={"/leaderboard"}>

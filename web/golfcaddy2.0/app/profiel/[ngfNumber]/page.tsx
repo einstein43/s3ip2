@@ -21,5 +21,5 @@ export default function ngfNumber({
   }, []);
 
   return <div>hello {user && user.name}
-  <ChatComponent></ChatComponent></div>;
+  <ChatComponent/></div>;
 }

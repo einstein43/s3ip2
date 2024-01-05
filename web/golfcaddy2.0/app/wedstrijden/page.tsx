@@ -2,6 +2,7 @@
 import MatchCard from "@/public/components/molecules/matchcard.molecule";
 import styles from "./page.module.css";
 import { useEffect, useState } from "react";
+import { Golfer } from "@/public/models/golfer.model";
 
 interface GolfRound {
   id: number;
@@ -33,27 +34,17 @@ interface GolfRound {
 
 export default function Wedstrijden() {
   const [golfRounds, setGolfRounds] = useState<GolfRound[]>([]);
-
+  const [user, setUser] = useState<Golfer>();
   useEffect(() => {
-  
-    const fetchGolfRounds = async () => {
-      try {
-        const response = await fetch("http://localhost:3001/rounds/all"); 
-        const data = await response.json();
-        setGolfRounds(data);
-      } catch (error) {
-        console.error("Error fetching golf rounds:", error);
-      }
-    };
-
-    fetchGolfRounds();
-  }, []);
-
+  const currentUser = localStorage.getItem("golfer");
+  setUser(JSON.parse(currentUser!));
+    
+  }, []); 
   return (
     <main className={styles.main}>
-      {golfRounds.map((round) => (
-        <MatchCard key={round.id}  />
-      ))}
+     <div><h1>Welcome {user?.name} </h1></div>
+      
+      
     </main>
   );
 }

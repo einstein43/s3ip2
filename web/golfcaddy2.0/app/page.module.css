@@ -24,22 +24,19 @@
 
 #welcome_div {
   grid-area: 1 / 1 / 2 / 4;
-  background-color: green;
-  font-size: 60px;
+   font-size: 60px;
 }
 
 .label {
   position: sticky;
   top: 0;
-  background-color: #fff; /* Add a background color for better visibility */
-  z-index: 1;
+   z-index: 1;
 }
 
 #ngf_top {
   position: sticky;
   top: 0;
-  background-color: #fff; /* Add a background color for better visibility */
-  z-index: 1;
+   z-index: 1;
   height: 130px;
 }
 
