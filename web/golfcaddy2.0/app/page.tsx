@@ -121,7 +121,7 @@ export default function Home() {
         {searchTerm && (
           <ul className={styles.golfers_list}>
             {filteredGolfers.map((golfer) => (
-              <li key={golfer.id} onClick={() => handleClick(golfer)}>
+              <li key={golfer.id} onClick={() => handleClick(golfer)} onKeyDown={() => handleClick(golfer)}>
                 <a href={`/profiel/${golfer.ngf}`}>
                   <a>{golfer.name}</a>
                 </a>

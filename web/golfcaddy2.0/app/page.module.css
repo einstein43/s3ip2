@@ -8,7 +8,6 @@
   height: 100vh;
   justify-items: center;
   align-items: center;
-  background-color: darkgrey;
 }
 
 #ngf_div {
@@ -19,7 +18,6 @@
   overflow-y: auto;
   height: 600px;
   max-height: 600px; /* Set a fixed height for the container */
-  overflow-y: auto;
 }
 
 #welcome_div {
