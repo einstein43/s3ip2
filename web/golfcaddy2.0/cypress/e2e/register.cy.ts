@@ -1,5 +1,5 @@
 /// <reference types="cypress" />
-
+export default {};
 describe('Register functionality', () => {
     it('should successfully register a user', () => {
       cy.visit('localhost:3000');  

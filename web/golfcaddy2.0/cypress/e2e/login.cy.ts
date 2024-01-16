@@ -1,5 +1,5 @@
 /// <reference types="cypress" />
-
+export default {};
 describe('Login functionality', () => {
     it('should successfully log in a user', () => {
       cy.visit('/'); // Adjust the URL if needed
