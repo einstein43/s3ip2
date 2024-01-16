@@ -33,7 +33,7 @@ interface Round {
   hole18?: number;
 }
 
-const HoleNumberPage: React.FC<HoleNumberPageProps> = ({ onSubmit, onApiSubmit }) => {
+export default function HoleNumberPage({ onSubmit, onApiSubmit }: HoleNumberPageProps): React.ReactElement {
   const [hole, setHole] = useState(1);
   const [scores, setScores] = useState(Array(18).fill(''));
   const [currentScore, setCurrentScore] = useState('');
@@ -171,4 +171,4 @@ const HoleNumberPage: React.FC<HoleNumberPageProps> = ({ onSubmit, onApiSubmit }
   );
 };
 
-export default HoleNumberPage;
+ 
