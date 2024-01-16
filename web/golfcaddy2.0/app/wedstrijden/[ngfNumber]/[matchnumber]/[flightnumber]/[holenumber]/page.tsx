@@ -2,11 +2,7 @@
 import { useState, useEffect, ChangeEvent, FormEvent } from 'react';
 import styles from './page.module.css'; // Replace with the actual module file path
 import React from 'react';
-
-type HoleNumberPageProps = {
-  onSubmit: (scores: string[]) => void;
-  onApiSubmit: (round: Round) => void;
-};
+ 
 
 interface Round {
   round_id?: number;
@@ -33,7 +29,7 @@ interface Round {
   hole18?: number;
 }
 
-export default function HoleNumberPage({ onSubmit, onApiSubmit }: HoleNumberPageProps): React.ReactElement {
+export default function HoleNumberPage( ) {
   const [hole, setHole] = useState(1);
   const [scores, setScores] = useState(Array(18).fill(''));
   const [currentScore, setCurrentScore] = useState('');
@@ -61,7 +57,7 @@ export default function HoleNumberPage({ onSubmit, onApiSubmit }: HoleNumberPage
 
     // Call the onSubmit callback with the scores when all holes are filled
     if (hole === 18) {
-      onSubmit(scores);
+       
     }
   };
 
@@ -116,7 +112,7 @@ export default function HoleNumberPage({ onSubmit, onApiSubmit }: HoleNumberPage
         .then((response) => response.json())
         .then((data) => {
           console.log('Success:', data);
-          onApiSubmit(round);
+          
         })
         .catch((error) => {
           console.error('Error:', error);
