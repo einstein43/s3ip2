@@ -3,13 +3,23 @@ import { Golfer } from "@/public/models/golfer.model";
 import styles from "./page.module.css";
 import { useEffect, useState } from "react";
 import React from "react";
-export default function matchPage({
+export default function MatchPage({
   params: { golfer },
 }: {
   params: { golfer: Golfer };
 }) {
   const [user, setUser] = useState<Golfer | null>(null);
   const [match, setMatch] = useState<any>(null);
+
+
+  function getMatchInfo() {
+    const match = user?.currentmatch_id;
+    fetch(`http://localhost:3001/match/${match}`)
+      .then((response) => response.json())
+      .then((data) => setMatch(data));
+
+  }
+
 
   useEffect(() => {
     const golferString = localStorage.getItem("golfer");
@@ -23,13 +33,6 @@ export default function matchPage({
   }, []);
 
 
-  function getMatchInfo() {
-    const match = user?.currentmatch_id;
-    fetch(`http://localhost:3001/match/${match}`)
-      .then((response) => response.json())
-      .then((data) => setMatch(data));
-
-  }
 
   return (
     <div>

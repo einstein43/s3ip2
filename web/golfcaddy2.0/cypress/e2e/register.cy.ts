@@ -2,11 +2,11 @@
 
 describe('Register functionality', () => {
     it('should successfully register a user', () => {
-      cy.visit('localhost:3000'); // Adjust the URL if needed
+      cy.visit('localhost:3000');  
 
       // Fill in registration form
-      cy.get('input[name="ngfregister"]').type('12345'); // Change to a valid NGF number
-      cy.get('input[name="passwordregister"]').type('password123'); // Change to a valid password
+      cy.get('input[name="ngfregister"]').type('12345'); 
+      cy.get('input[name="passwordregister"]').type('password123'); 
       cy.get('form').submit();
 
       // Check if registration is successful

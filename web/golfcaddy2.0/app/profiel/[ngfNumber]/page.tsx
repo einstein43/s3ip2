@@ -4,7 +4,7 @@ import { Golfer } from "@/public/models/golfer.model";
 import React from "react";
 import { use, useEffect, useState } from "react";
 
-export default function ngfNumber({
+export default function NgfNumber({
   params: { golfer },
 }: {
   params: { golfer: Golfer };
