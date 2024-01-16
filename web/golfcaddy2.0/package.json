@@ -2,7 +2,6 @@
   "name": "golfcaddy2.0",
   "version": "0.1.0",
   "private": true,
-  
   "scripts": {
     "test": "jest",
     "test: all": "react-scripts test --watchAll=false -u",
@@ -17,6 +16,7 @@
     "@babel/plugin-syntax-jsx": "^7.23.3",
     "@types/socket.io-client": "^3.0.0",
     "classnames": "^2.5.1",
+    "cypress": "^13.6.2",
     "next": "latest",
     "react": "latest",
     "react-dom": "latest",
