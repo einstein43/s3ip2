@@ -2,6 +2,7 @@
 import { Golfer } from "@/public/models/golfer.model";
 import styles from "./page.module.css";
 import { useEffect, useState } from "react";
+import React from "react";
 export default function matchPage({
   params: { golfer },
 }: {

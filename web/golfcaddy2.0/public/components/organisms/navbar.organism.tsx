@@ -10,6 +10,7 @@ import HamburgerBtn from "../atoms/hamburgerBtn.atom";
 import { useState } from "react";
 import classNames from "classnames";
 import Link from "next/link";
+import React from "react";
 
 export const NavBar = () => {
   // State
@@ -89,7 +90,7 @@ async function getNgf() {
         >
           <ul id={styles.mobileLinkContainer}>
             <Link className={styles.link} href={"/"}>
-              Nieuws
+              Home
             </Link>
             <Link className={styles.link} href={"/wedstrijden"}>
               Wedstrijden
@@ -97,8 +98,8 @@ async function getNgf() {
             <Link className={styles.link} href={"/profiel"}>
               Profiel
             </Link>
-            <Link className={styles.link} href={"/instellingen"}>
-              Instellingen
+            <Link className={styles.link} href={"/Leaderboard"}>
+              Leaderboard
             </Link>
           </ul>
         </div>

@@ -1,22 +1,8 @@
 "use client";
-import Image from "next/image";
 import styles from "./page.module.css";
-import { Button } from "@/public/components/atoms/button.atom";
-import telegram from "@/public/assets/telegram.svg";
-import HamburgerBtn from "@/public/components/atoms/hamburgerBtn.atom";
-import { SetStateAction, useEffect, useState } from "react";
-import { NavBar } from "@/public/components/organisms/navbar.organism";
-import MatchCard from "@/public/components/molecules/matchcard.molecule";
-import classNames from "classnames";
-import ScoreCard from "@/public/components/organisms/scorecard.organism";
-import Leaderboard from "@/public/components/templates/leaderboard.template";
-import io from "socket.io-client";
-import ChatComponent from "@/public/components/molecules/ChatComponent";
-import Link from "next/link";
-import { redirect } from "next/dist/server/api-utils";
-import { useRouter } from 'next/router';
+import { useEffect, useState } from "react";
 import { Golfer } from "@/public/models/golfer.model";
- 
+import React from "react";
 
 export default function Home() {
   const [searchTerm, setSearchTerm] = useState<string>("");
@@ -29,11 +15,8 @@ export default function Home() {
     ngf: 0,
     password: "",
   });
-  
- 
 
   useEffect(() => {
-   
     const fetchGolfers = async () => {
       try {
         const response = await fetch("http://localhost:3001/golfer/all");
@@ -74,7 +57,7 @@ export default function Home() {
   const handleRegister = async (e: any) => {
     e.preventDefault();
 
-     const apiUrl = "http://localhost:3001/register";
+    const apiUrl = "http://localhost:3001/register";
     try {
       const response = await fetch(apiUrl, {
         method: "POST",
@@ -98,7 +81,7 @@ export default function Home() {
   const handleLogin = async (e: any) => {
     e.preventDefault();
 
-     const apiUrl = "http://localhost:3001/login";
+    const apiUrl = "http://localhost:3001/login";
     try {
       const response = await fetch(apiUrl, {
         method: "POST",
@@ -110,7 +93,7 @@ export default function Home() {
 
       if (response.ok) {
         console.log("User logged in successfully!");
-        } else {
+      } else {
         console.error("loggin in failed.");
         // Handle error scenarios, show a message, etc.
       }
@@ -154,7 +137,7 @@ export default function Home() {
             NGF#:
             <input
               type="number"
-              name="ngf"
+              name="ngfregister"
               value={registerData.ngf}
               onChange={handleChange}
               required
@@ -165,7 +148,7 @@ export default function Home() {
             Password:
             <input
               type="password"
-              name="password"
+              name="passwordregister"
               value={registerData.password}
               onChange={handleChange}
               required
@@ -176,42 +159,6 @@ export default function Home() {
         </form>
       </div>
 
-      <div id={styles.login_div}>
-        <h1>login here</h1>
-         <form onSubmit={handleLogin}>
-          <label>
-            NGF#:
-            <input
-              type="number"
-              name="ngf"
-              value={loginData.ngf}
-              onChange={handleLoginChange}
-              required
-            />
-          </label>
-          <br />
-          <label>
-            Password:
-            <input
-              type="password"
-              name="password"
-              value={loginData.password}
-              onChange={handleLoginChange}
-              required
-            />
-          </label>
-          <br />
-          <button  type="submit"><a href={`/profiel/${loginData.ngf}`}>Login here</a></button> 
-        </form>
-      </div>
-
-
-
-      </div>
+    </div>
   );
 }
-
-    
-
-  
- 

@@ -1,6 +1,8 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "ESNext",
+    "module": "commonjs",
+    
     "lib": [
       "dom",
       "dom.iterable",
@@ -11,7 +13,6 @@
     "strict": true,
     "noEmit": true,
     "esModuleInterop": true,
-    "module": "CommonJS",
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
@@ -27,8 +28,8 @@
         "./*"
       ]
     },
-    "forceConsistentCasingInFileNames": true
-  },
+    "forceConsistentCasingInFileNames": true,
+   },
   "include": [
     "next-env.d.ts",
     "**/*.ts",

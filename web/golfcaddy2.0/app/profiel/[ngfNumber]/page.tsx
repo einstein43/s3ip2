@@ -1,6 +1,7 @@
 "use client";
 import ChatComponent from "@/public/components/molecules/ChatComponent";
 import { Golfer } from "@/public/models/golfer.model";
+import React from "react";
 import { use, useEffect, useState } from "react";
 
 export default function ngfNumber({

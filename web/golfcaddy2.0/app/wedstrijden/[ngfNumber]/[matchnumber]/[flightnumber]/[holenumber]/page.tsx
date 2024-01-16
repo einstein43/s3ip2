@@ -1,6 +1,7 @@
 "use client"
 import { useState, useEffect, ChangeEvent, FormEvent } from 'react';
 import styles from './page.module.css'; // Replace with the actual module file path
+import React from 'react';
 
 type HoleNumberPageProps = {
   onSubmit: (scores: string[]) => void;
