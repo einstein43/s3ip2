@@ -142,29 +142,31 @@ export default function HoleNumberPage( ) {
             className={styles.input}
           />
         </label>
-        <button name="nexthole" className={styles.button} disabled={!isSubmissionStep1 || hole === 18}>
+        <button name="nexthole" className={styles.button} disabled={!isSubmissionStep1}>
           Next Hole
         </button>
       </form>
 
       {hole === 18 && (
-        <>
-          {!isSubmissionStep1 && (
-            <div className={styles.scoreList}>
-              <h3>Full List of Scores:</h3>
-              <ul>
-                {scores.map((score, index) => (
-                  <li key={index}>Hole {index + 1}: {score}</li>
-                ))}
-              </ul>
-            </div>
-          )}
+      <>
+        {!isSubmissionStep1 && (
+          <div className={styles.scoreList}>
+            <h3>Full List of Scores:</h3>
+            <ul>
+              {scores.map((score, index) => (
+                <li key={index}>Hole {index + 1}: {score}</li>
+              ))}
+            </ul>
+          </div>
+        )}
+        {hole === 18 && scores[17] && (
           <button type='submit' onClick={handleApiSubmit} className={styles.button}>
             {isSubmissionStep1 ? 'Submit to API' : 'Confirm Submission'}
           </button>
-        </>
-      )}
-    </div>
+        )}
+      </>
+    )}
+  </div>
   );
 };
 
