@@ -15,7 +15,7 @@ describe('End-to-End Tests', () => {
     // Assuming the input field has the class 'input' and the button has the class 'button'
     for (let i = 1; i <= 18; i++) {
       cy.get('input[name="score"]').type('3'); 
-      cy.get('button[type="submit"]').click(); 
+      cy.get('button[name="nexthole"]').click(); 
     }
 
     // Confirm Submission
@@ -26,6 +26,5 @@ describe('End-to-End Tests', () => {
     cy.get('button[type="submit"]').click(); // Click the "Confirm Submission" button
     cy.wait('@apiSubmit').its('response.statusCode').should('eq', 200);
 
-    // Optionally, you can add assertions for any other UI changes or updates based on the API response
   });
 });

@@ -142,7 +142,7 @@ export default function HoleNumberPage( ) {
             className={styles.input}
           />
         </label>
-        <button type="submit" className={styles.button} disabled={!isSubmissionStep1}>
+        <button name="nexthole" className={styles.button} disabled={!isSubmissionStep1 || hole === 18}>
           Next Hole
         </button>
       </form>
