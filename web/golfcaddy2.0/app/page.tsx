@@ -32,7 +32,7 @@ export default function Home() {
     };
 
     fetchGolfers();
-  }, []); // Fetch golfers on component mount
+  }, []); 
 
   const filteredGolfers = golfers.filter(
     (golfer) =>

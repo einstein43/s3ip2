@@ -3,7 +3,7 @@
 describe('Registration Flow', () => {
   it('should successfully register a new user', () => {
      
-    cy.visit('https://s3ip2.vercel.app/');  
+    cy.visit('https://s3ip2.vercel.app');  
 
     // Fill in the registration form
     cy.get('input[name="ngf"]').type('123456');   
