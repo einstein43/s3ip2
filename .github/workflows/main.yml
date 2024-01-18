@@ -10,8 +10,9 @@ jobs:
         uses: actions/checkout@v4
       - name: Dependancies
         run: npm ci --include=dev
-      - name: Cypress run
+      - name: Start app
+        run: npm run dev
+      - name: Run Cypress Tests (headless)
         uses: cypress-io/github-action@v6
         with:
-          build: npm run cypress:open
-          start: npm run dev
+          start: npm run cypress:run
