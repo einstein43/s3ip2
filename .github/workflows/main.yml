@@ -12,13 +12,8 @@ jobs:
         run: cd web/golfcaddy2.0
       - name: Dependancies
         run: npm ci --include=dev
-    
-      - name: Cypress run
-        uses: cypress-io/github-action@v6
-        with:
-          build: npm run build
-          start: npm run dev
-      - name: Run Cypress Tests (headless)
-        uses: cypress-io/github-action@v6
-        with:
-          start: npm run cypress:run
+      - name: Start app
+        run: npm run dev
+      - name: Cypress
+        run: npx cypress run
+      
