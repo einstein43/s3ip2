@@ -22,7 +22,7 @@ describe('End-to-End Tests', () => {
     cy.get('button[type="submit"]').click(); // Click the "Submit to API" button
 
     // Check if the API call was successful (you might need to adjust the API endpoint and response validation)
-    cy.intercept('POST', 'http://localhost:3001/round').as('apiSubmit');
+    cy.intercept('POST', 'http://localhost:3001/rounds/new').as('apiSubmit');
     cy.get('button[type="submit"]').click(); // Click the "Confirm Submission" button
     cy.wait('@apiSubmit').its('response.statusCode').should('eq', 200);
 
