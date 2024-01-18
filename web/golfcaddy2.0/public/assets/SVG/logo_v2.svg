@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Laag_2" data-name="Laag 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 410.95 251.55">
+  <defs>
+    <style>
+      .cls-1, .cls-2 {
+        isolation: isolate;
+      }
+
+      .cls-3 {
+        fill: #48bbed;
+      }
+
+      .cls-3, .cls-4 {
+        stroke-width: 0px;
+      }
+
+      .cls-4 {
+        fill: #fff;
+      }
+
+      .cls-5 {
+        letter-spacing: 0em;
+      }
+
+      .cls-2 {
+        fill: #7e7e7e;
+        font-family: MontserratAlternates-SemiBold, 'Montserrat Alternates';
+        font-size: 77.04px;
+        font-weight: 600;
+      }
+    </style>
+  </defs>
+  <g id="Laag_1-2" data-name="Laag 1">
+    <g id="Group_67" data-name="Group 67">
+      <g id="Group_65" data-name="Group 65">
+        <path id="Rectangle_20" data-name="Rectangle 20" class="cls-3" d="m192.61,0h0c41.63,0,75.37,33.74,75.37,75.37h0c0,41.63-33.74,75.37-75.37,75.37h0c-41.63,0-75.37-33.74-75.37-75.37h0C117.24,33.74,150.99,0,192.61,0Z"/>
+        <g id="Icon_material-golf-course" data-name="Icon material-golf-course">
+          <path id="Path_1" data-name="Path 1" class="cls-4" d="m229.89,108.83c0,3.66-2.97,6.63-6.63,6.63-3.66,0-6.63-2.97-6.63-6.63,0-3.66,2.97-6.63,6.63-6.63h0c3.66,0,6.63,2.97,6.63,6.63Z"/>
+          <path id="Path_2" data-name="Path 2" class="cls-4" d="m212.22,48.84l-35.34-17.32v79.52h-8.84v-7.64c-7.89,1.55-13.25,4.37-13.25,7.64,0,4.86,11.88,8.84,26.51,8.84s26.51-3.98,26.51-8.84c0-4.37-9.54-8-22.09-8.71v-39.99l26.5-13.5Z"/>
+        </g>
+      </g>
+      <g id="golfcaddy-2" class="cls-1">
+        <text class="cls-2" transform="translate(0 231.13)"><tspan x="0" y="0">gol</tspan><tspan class="cls-5" x="129.05" y="0">fc</tspan><tspan x="199.77" y="0">addy</tspan></text>
+      </g>
+    </g>
+  </g>
+</svg>
