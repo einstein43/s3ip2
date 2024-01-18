@@ -56,6 +56,7 @@ exports.GolferService = void 0;
 // import { IGolferRepository } from "../interfaces/golfer.interface";
 var tsyringe_1 = require("tsyringe");
 var golfer_repository_1 = __importDefault(require("../repositories/golfer.repository"));
+var bcrypt_1 = __importDefault(require("bcrypt"));
 tsyringe_1.container.register("IGolferRepository", {
     useClass: golfer_repository_1.default,
 });
@@ -69,16 +70,42 @@ var GolferService = /** @class */ (function () {
         this.updateGolferById = this.updateGolferById.bind(this);
         this.login = this.login.bind(this);
     }
-    GolferService.prototype.login = function (username, password) {
+    GolferService.prototype.login = function (ngf, password) {
         return __awaiter(this, void 0, void 0, function () {
-            var golfer;
+            var storedHashedPassword, isPasswordValid;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.golferRepository.login(username, password)];
+                    case 0: return [4 /*yield*/, this.golferRepository.login(ngf)];
                     case 1:
-                        golfer = _a.sent();
-                        console.log("service: golfer logged in");
-                        return [2 /*return*/, golfer];
+                        storedHashedPassword = _a.sent();
+                        return [4 /*yield*/, bcrypt_1.default.compare(password, storedHashedPassword)];
+                    case 2:
+                        isPasswordValid = _a.sent();
+                        console.log("service: password valid: " + isPasswordValid);
+                        if (isPasswordValid) {
+                            return [2 /*return*/, "login successful"];
+                        }
+                        else {
+                            return [2 /*return*/, "password incorrect"];
+                        }
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
+    GolferService.prototype.createGolfer = function (ngf, password) {
+        return __awaiter(this, void 0, void 0, function () {
+            var hashedPassword;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, bcrypt_1.default.hash(password, 10)];
+                    case 1:
+                        hashedPassword = _a.sent();
+                        return [4 /*yield*/, this.golferRepository.createGolfer(ngf, hashedPassword)];
+                    case 2:
+                        _a.sent();
+                        console.log("service: golfer created");
+                        return [2 /*return*/];
                 }
             });
         });
@@ -93,19 +120,6 @@ var GolferService = /** @class */ (function () {
                         golfers = _a.sent();
                         console.log("service: golfers retrieved");
                         return [2 /*return*/, golfers];
-                }
-            });
-        });
-    };
-    GolferService.prototype.createGolfer = function (golfer) {
-        return __awaiter(this, void 0, void 0, function () {
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.golferRepository.createGolfer(golfer)];
-                    case 1:
-                        _a.sent();
-                        console.log("service: golfer created");
-                        return [2 /*return*/];
                 }
             });
         });

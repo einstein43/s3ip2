@@ -66,19 +66,19 @@ var GolferController = /** @class */ (function () {
     }
     GolferController.prototype.login = function (req, res) {
         return __awaiter(this, void 0, void 0, function () {
-            var username, password, golfer, error_1;
+            var ngf, password, loginMessage, error_1;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         _a.trys.push([0, 2, , 3]);
-                        username = req.body.username;
+                        ngf = parseInt(req.body.ngf);
                         password = req.body.password;
-                        return [4 /*yield*/, this.golferService.login(username, password)];
+                        return [4 /*yield*/, this.golferService.login(ngf, password)];
                     case 1:
-                        golfer = _a.sent();
-                        res.status(200).send(golfer);
+                        loginMessage = _a.sent();
+                        res.status(200).send(loginMessage);
                         console.log("controller: golfer logged in");
-                        return [2 /*return*/, golfer];
+                        return [2 /*return*/, loginMessage];
                     case 2:
                         error_1 = _a.sent();
                         console.error(error_1);
@@ -186,17 +186,18 @@ var GolferController = /** @class */ (function () {
     };
     GolferController.prototype.createGolfer = function (req, res) {
         return __awaiter(this, void 0, void 0, function () {
-            var golfer, error_6;
+            var ngf, password, error_6;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         _a.trys.push([0, 2, , 3]);
-                        golfer = req.body;
-                        return [4 /*yield*/, this.golferService.createGolfer(golfer)];
+                        ngf = parseInt(req.body.ngf);
+                        password = req.body.password;
+                        return [4 /*yield*/, this.golferService.createGolfer(ngf, password)];
                     case 1:
                         _a.sent();
-                        res.status(200).send("controller: golfer created   id= " + golfer.id);
-                        console.log("controller: golfer created   id= " + golfer.id);
+                        res.status(200).send("controller: golfer created   id= " + ngf);
+                        console.log("controller: golfer created   id= " + password);
                         return [3 /*break*/, 3];
                     case 2:
                         error_6 = _a.sent();

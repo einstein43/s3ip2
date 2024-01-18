@@ -75,6 +75,22 @@ export default class GolferRepository {
       throw new Error("Failed to retrieve golfers");
     }
   }
+  public async getGolferByNgf(ngf: number): Promise<any> {
+    try {
+      console.log(ngf);
+      const golfer = await prisma.golfers.findFirst({
+        where: {
+          ngf: ngf,
+        },
+      });
+      console.log("golfer retrieved with ngf" + ngf);
+      console.log(golfer);
+      return golfer;
+    } catch (error) {
+      console.error("could not find golfers in repository");
+      throw new Error("Failed to retrieve golfers");
+    }
+  }
 
 
   public async updateGolferById(id: number, golfer: Golfer): Promise<void> {

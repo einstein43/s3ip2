@@ -18,6 +18,7 @@ export class GolferService {
     this.getGolferById = this.getGolferById.bind(this);
     this.deleteGolferById = this.deleteGolferById.bind(this);
     this.updateGolferById = this.updateGolferById.bind(this);
+    this.getGolferByNgf = this.getGolferByNgf.bind(this);
     this.login = this.login.bind(this);
   }
 
@@ -50,6 +51,11 @@ export class GolferService {
   public async getGolferById(id: number): Promise<Golfer> {
     const golfer: Golfer = await this.golferRepository.getGolferById(id);
     console.log("service: unique golfer retrieved" + golfer);
+    return golfer;
+  }
+  public async getGolferByNgf(ngf: number): Promise<Golfer> {
+    const golfer: Golfer = await this.golferRepository.getGolferByNgf(ngf);
+    console.log("service: unique ngf golfer retrieved" + golfer);
     return golfer;
   }
 

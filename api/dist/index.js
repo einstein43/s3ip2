@@ -69,7 +69,15 @@ var flightController = tsyringe_1.container.resolve(flight_controller_1.FlightCo
 {
     /* GOLFER ENDPOINTS */
 }
-app.post("login", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+app.post("/register", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0: return [4 /*yield*/, golferController.createGolfer(req, res)];
+            case 1: return [2 /*return*/, _a.sent()];
+        }
+    });
+}); });
+app.post("/login", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0: return [4 /*yield*/, golferController.login(req, res)];
@@ -81,14 +89,6 @@ app.get("/golfer/all", function (req, res) { return __awaiter(void 0, void 0, vo
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0: return [4 /*yield*/, golferController.getAllGolfers(req, res)];
-            case 1: return [2 /*return*/, _a.sent()];
-        }
-    });
-}); });
-app.post("/golfer/new", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    return __generator(this, function (_a) {
-        switch (_a.label) {
-            case 0: return [4 /*yield*/, golferController.createGolfer(req, res)];
             case 1: return [2 /*return*/, _a.sent()];
         }
     });

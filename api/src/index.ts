@@ -65,6 +65,11 @@ app.get("/golfer/:id", async (req: Request, res: Response) => {
 
   return await golferController.getGolferById(golferId, res);
 });
+app.get("/golfer/ngf/:ngf", async (req: Request, res: Response) => {
+  const golferNgf = parseInt(req.params.ngf);
+
+  return await golferController.getGolferByNgf(golferNgf, res);
+});
 
 {
   /* ROUND ENDPOINTS */

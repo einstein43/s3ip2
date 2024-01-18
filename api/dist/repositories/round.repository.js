@@ -48,7 +48,7 @@ var roundRepository = /** @class */ (function () {
                 switch (_a.label) {
                     case 0:
                         _a.trys.push([0, 2, , 3]);
-                        return [4 /*yield*/, prisma.golf_rounds.findMany({})];
+                        return [4 /*yield*/, prisma.golf_scores.findMany({})];
                     case 1:
                         rounds = _a.sent();
                         console.log("rounds retrieved");

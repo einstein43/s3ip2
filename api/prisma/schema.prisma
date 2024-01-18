@@ -21,8 +21,6 @@ model golf_rounds {
 model golf_scores {
   id          Int           @id @default(autoincrement())
   golfer_id   Int?
-  course      String?       @db.VarChar(255)
-  date        DateTime?     @db.Date
   hole1       Int?
   hole2       Int?
   hole3       Int?

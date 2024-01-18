@@ -16,6 +16,7 @@ export class GolferController {
     this.updateGolferById = this.updateGolferById.bind(this);
     this.deleteGolferById = this.deleteGolferById.bind(this);
     this.createGolfer = this.createGolfer.bind(this);
+    this.getGolferByNgf = this.getGolferByNgf.bind(this);
     this.login = this.login.bind(this);
   }
 
@@ -60,6 +61,17 @@ export class GolferController {
       const golfer = await this.golferService.getGolferById(id);
       res.status(200).send(golfer);
       console.log("controller: unique golfer retrieved   id=" + id);
+      return golfer;
+    } catch (error) {
+      console.error(error);
+      res.status(500).send("error in controller");
+    }
+  }
+  public async getGolferByNgf(ngf: number, res: Response) {
+    try {
+      const golfer = await this.golferService.getGolferByNgf(ngf);
+      res.status(200).send(golfer);
+      console.log("controller: unique golfer retrieved   ngf=" + golfer.ngf);
       return golfer;
     } catch (error) {
       console.error(error);

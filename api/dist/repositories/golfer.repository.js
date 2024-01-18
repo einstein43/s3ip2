@@ -41,27 +41,63 @@ var prisma = new client_1.PrismaClient();
 var GolferRepository = /** @class */ (function () {
     function GolferRepository() {
     }
-    GolferRepository.prototype.login = function (username, password) {
+    GolferRepository.prototype.login = function (ngf) {
         return __awaiter(this, void 0, void 0, function () {
-            var golfer, error_1;
+            var golfer, password, error_1;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         _a.trys.push([0, 2, , 3]);
-                        return [4 /*yield*/, prisma.golfers.findUnique({
+                        return [4 /*yield*/, prisma.golfers.findFirst({
                                 where: {
-                                    name: username,
-                                    password: password,
+                                    ngf: ngf,
                                 },
                             })];
                     case 1:
                         golfer = _a.sent();
-                        console.log("repository: golfer logged in");
-                        return [2 /*return*/, golfer];
+                        if (golfer) {
+                            console.log("repository: golfer found, returning hashed password");
+                            console.log(golfer);
+                            password = golfer.password || "test wrong";
+                            ;
+                            console.log(password);
+                            return [2 /*return*/, password];
+                        }
+                        else {
+                            console.error("Golfer not found");
+                            return [2 /*return*/, "Golfer not found"];
+                        }
+                        return [3 /*break*/, 3];
                     case 2:
                         error_1 = _a.sent();
-                        console.error("could not find golfer in repository");
-                        return [2 /*return*/, null];
+                        console.error("An error occurred:", error_1);
+                        return [2 /*return*/, "password incorrect"];
+                    case 3: return [2 /*return*/];
+                }
+            });
+        });
+    };
+    GolferRepository.prototype.createGolfer = function (ngf, password) {
+        return __awaiter(this, void 0, void 0, function () {
+            var newGolfer, error_2;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        _a.trys.push([0, 2, , 3]);
+                        return [4 /*yield*/, prisma.golfers.create({
+                                data: {
+                                    ngf: ngf,
+                                    password: password,
+                                },
+                            })];
+                    case 1:
+                        newGolfer = _a.sent();
+                        console.log("repository: golfer created");
+                        return [3 /*break*/, 3];
+                    case 2:
+                        error_2 = _a.sent();
+                        console.error(error_2);
+                        return [3 /*break*/, 3];
                     case 3: return [2 /*return*/];
                 }
             });
@@ -69,7 +105,7 @@ var GolferRepository = /** @class */ (function () {
     };
     GolferRepository.prototype.getAllGolfers = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var golfers, error_2;
+            var golfers, error_3;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -80,7 +116,7 @@ var GolferRepository = /** @class */ (function () {
                         console.log("repository: golfers retrieved");
                         return [2 /*return*/, golfers];
                     case 2:
-                        error_2 = _a.sent();
+                        error_3 = _a.sent();
                         console.error("could not find golfers in repository");
                         throw new Error("Failed to retrieve golfers");
                     case 3: return [2 /*return*/];
@@ -90,7 +126,7 @@ var GolferRepository = /** @class */ (function () {
     };
     GolferRepository.prototype.getGolferById = function (id) {
         return __awaiter(this, void 0, void 0, function () {
-            var golfer, error_3;
+            var golfer, error_4;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -107,44 +143,9 @@ var GolferRepository = /** @class */ (function () {
                         console.log(golfer);
                         return [2 /*return*/, golfer];
                     case 2:
-                        error_3 = _a.sent();
+                        error_4 = _a.sent();
                         console.error("could not find golfers in repository");
                         throw new Error("Failed to retrieve golfers");
-                    case 3: return [2 /*return*/];
-                }
-            });
-        });
-    };
-    GolferRepository.prototype.createGolfer = function (golfer) {
-        return __awaiter(this, void 0, void 0, function () {
-            var newGolfer, error_4;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        _a.trys.push([0, 2, , 3]);
-                        if (!golfer.name)
-                            throw new Error("No golfer provided");
-                        if (!golfer.golf_rounds)
-                            throw new Error("No golf rounds provided");
-                        return [4 /*yield*/, prisma.golfers.create({
-                                data: {
-                                    id: golfer.id,
-                                    name: golfer.name,
-                                    handicap: golfer.handicap || 0,
-                                    age: golfer.age || 0,
-                                    homecourse: golfer.homecourse || "null",
-                                    country: golfer.country || "null",
-                                    golf_rounds: {},
-                                },
-                            })];
-                    case 1:
-                        newGolfer = _a.sent();
-                        console.log("repository: golfer created");
-                        return [3 /*break*/, 3];
-                    case 2:
-                        error_4 = _a.sent();
-                        console.error(error_4);
-                        return [3 /*break*/, 3];
                     case 3: return [2 /*return*/];
                 }
             });
