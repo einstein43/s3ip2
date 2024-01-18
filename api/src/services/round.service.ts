@@ -18,11 +18,16 @@ export class RoundService {
     this.getRoundById = this.getRoundById.bind(this);
     this.deleteRoundById = this.deleteRoundById.bind(this);
     this.updateRoundById = this.updateRoundById.bind(this);
+    this.createScore = this.createScore.bind(this);
   }
 
   public async getAllRounds(): Promise<Round[]> {
     const Rounds: Round[] = await this.roundRepository.getAllRounds();
     return Rounds;
+  }
+  public async createScore(score: Round): Promise<void> {
+    await this.roundRepository.createScore(score);
+    
   }
  
   public async createRound(round: Round): Promise<void> {

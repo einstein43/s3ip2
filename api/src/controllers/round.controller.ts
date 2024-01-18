@@ -12,6 +12,7 @@ container.register("IRoundService", {
 export class RoundController {
   constructor(@inject("IRoundService") private roundService: RoundService) {
     this.getAllRounds = this.getAllRounds.bind(this);
+    this.createScore = this.createScore.bind(this);
   }
 
   public async getAllRounds(req: Request, res: Response) {
@@ -27,6 +28,18 @@ export class RoundController {
 
     
   }
+public async createScore(req: Request, res: Response): Promise<void> {
+    try {
+      const score = req.body;
+      await this.roundService.createScore(score);
+      res.status(200).send("controller success -> id: " + score.id);
+    } catch (error) {
+      console.error("Error creating score:", error);
+      res.status(500).send("Error creating score");
+    }
+  }
+
+
 
   public async createRound(req: Request, res: Response): Promise<void> {
     try {

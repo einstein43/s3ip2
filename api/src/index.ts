@@ -75,6 +75,10 @@ app.get("/golfer/ngf/:ngf", async (req: Request, res: Response) => {
   /* ROUND ENDPOINTS */
 }
 
+app.post("/score/new", async (req: Request, res: Response) => {
+  return await roundController.createScore(req, res);
+});
+
 app.get("/rounds/all", async (req: Request, res: Response) => {
   return await roundController.getAllRounds(req, res);
 });
