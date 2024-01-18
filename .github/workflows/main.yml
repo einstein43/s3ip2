@@ -8,12 +8,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Switch directory
-        run: cd web
-      - name: Switch directory 2
-        run: cd golfcaddy2.0
-      - name: Check directory
-        run: ls
+      - name: run App and tests
+        working-directory: ./web/golfcaddy2.0
       - name: Dependancies
         run: npm ci --include=dev
       - name: Cypress
