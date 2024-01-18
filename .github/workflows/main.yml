@@ -9,7 +9,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Switch directory
-        run: cd web/golfcaddy2.0
+        run: cd web
+      - name: Switch directory 2
+        run: cd web
       - name: Check directory
         run: ls
       - name: Dependancies
