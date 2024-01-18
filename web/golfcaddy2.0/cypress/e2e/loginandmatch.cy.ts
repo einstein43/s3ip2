@@ -1,5 +1,5 @@
 /// <reference types="cypress" />
-
+export {};
 describe('End-to-End Tests', () => {
   it('should successfully log in a user and fill in scores on Matchpage', () => {
     
