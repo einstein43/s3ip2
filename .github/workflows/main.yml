@@ -8,17 +8,16 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Switch directory
+        run: cd web/golfcaddy2.0
       - name: Dependancies
         run: npm ci --include=dev
-      - name: Build app
-        run: npm run build
-      - name: Start app
-        run: npm run dev
+    
       - name: Cypress run
         uses: cypress-io/github-action@v6
         with:
           build: npm run build
-          start: npm start
+          start: npm run dev
       - name: Run Cypress Tests (headless)
         uses: cypress-io/github-action@v6
         with:
