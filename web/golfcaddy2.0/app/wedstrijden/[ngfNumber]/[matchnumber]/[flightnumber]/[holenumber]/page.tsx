@@ -102,7 +102,7 @@ export default function HoleNumberPage( ) {
       console.log(round);
 
       // Call the onApiSubmit callback with the constructed Round object
-      fetch('http://localhost:3001/rounds/new', {
+      fetch('http://localhost:3001/score/new', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
