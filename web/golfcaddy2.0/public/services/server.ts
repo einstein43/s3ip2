@@ -2,8 +2,10 @@
 import express from "express";
 import http from "http";
 import { Server as SocketIOServer, Socket } from "socket.io";
- const app = express();
- 
+import cors from "cors";
+const app = express();
+app.use(cors()); // Add this line to enable CORS
+
 const server = http.createServer(app);
 const io = new SocketIOServer(server);
 io.on("connection", (socket: Socket) => {
