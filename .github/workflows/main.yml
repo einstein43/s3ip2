@@ -10,8 +10,6 @@ jobs:
         uses: actions/checkout@v4
       - name: run App and tests
         working-directory: ./web/golfcaddy2.0
-      - name: Dependancies
         run: npm ci --include=dev
-      - name: Cypress
-        run: npx cypress run
+             npx cypress run
       
