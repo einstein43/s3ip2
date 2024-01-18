@@ -11,7 +11,7 @@ jobs:
       - name: Switch directory
         run: cd web
       - name: Switch directory 2
-        run: cd web
+        run: cd golfcaddy2.0
       - name: Check directory
         run: ls
       - name: Dependancies
