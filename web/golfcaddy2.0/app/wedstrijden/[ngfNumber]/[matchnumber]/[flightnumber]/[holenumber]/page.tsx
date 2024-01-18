@@ -136,7 +136,7 @@ export default function HoleNumberPage( ) {
           Hole {hole}:
           <input
             type="number"
-            name='score'
+            name="score"
             value={currentScore}
             onChange={handleScoreChange}
             className={styles.input}
