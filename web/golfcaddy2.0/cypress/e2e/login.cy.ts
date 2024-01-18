@@ -1,16 +1,17 @@
 /// <reference types="cypress" />
+export {};
 export default {};
 describe('Login functionality', () => {
     it('should successfully log in a user', () => {
-      cy.visit('/'); // Adjust the URL if needed
+      cy.visit('https://s3ip2.vercel.app/'); 
   
       // Fill in login form
-      cy.get('input[name="ngf"]').type('12345'); // Use a registered NGF number
-      cy.get('input[name="password"]').type('password123'); // Use the corresponding password
-      cy.get('form').submit();
+      cy.get('input[name="ngf"]').type('12345'); 
+      cy.get('input[name="password"]').type('password123'); 
+      cy.get('button[type="submit"]').submit();
   
       // Check if login is successful
-      cy.contains('User logged in successfully!').should('exist');
+      cy.url().should('include', '/profiel/12345');  
     });
   });
   
