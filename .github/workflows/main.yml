@@ -10,10 +10,10 @@ jobs:
         uses: actions/checkout@v4
       - name: Switch directory
         run: cd web/golfcaddy2.0
+      - name: Check directory
+        run: ls
       - name: Dependancies
         run: npm ci --include=dev
-      - name: Start app
-        run: npm run dev
       - name: Cypress
         run: npx cypress run
       
