@@ -136,6 +136,7 @@ export default function HoleNumberPage( ) {
           Hole {hole}:
           <input
             type="number"
+            name='score'
             value={currentScore}
             onChange={handleScoreChange}
             className={styles.input}
@@ -158,7 +159,7 @@ export default function HoleNumberPage( ) {
               </ul>
             </div>
           )}
-          <button onClick={handleApiSubmit} className={styles.button}>
+          <button type='submit' onClick={handleApiSubmit} className={styles.button}>
             {isSubmissionStep1 ? 'Submit to API' : 'Confirm Submission'}
           </button>
         </>

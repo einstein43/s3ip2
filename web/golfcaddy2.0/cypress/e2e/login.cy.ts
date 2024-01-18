@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
+ 
 export {};
-export default {};
 describe('Login functionality', () => {
     it('should successfully log in a user', () => {
       cy.visit('https://s3ip2.vercel.app'); 
