@@ -14,6 +14,6 @@ describe('Registration Flow', () => {
 
     // Wait for registration to complete and check for success
    
-    cy.url().should('include', '/profiel/126'); // Adjust the path based on your application's route
+    cy.url().should('include', 'https://s3ip2.vercel.app/profiel/126').debug(); // Adjust the path based on your application's route
   });
 });

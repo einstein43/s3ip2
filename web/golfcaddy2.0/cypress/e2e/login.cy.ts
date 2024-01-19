@@ -11,7 +11,7 @@ describe('Login functionality', () => {
       cy.get('button[type="submit"]').click();
   cy.wait(5000);
       // Check if login is successful
-      cy.url().should('include', '/profiel/126');  
+      cy.url().should('include', 'https://s3ip2.vercel.app/profiel/126').debug();;  
     });
   });
   
