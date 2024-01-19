@@ -3,6 +3,7 @@
 import { container, inject, injectable } from "tsyringe";
 import { Round } from "../models/round.model";
 import RoundRepository from "../repositories/round.repository";
+import { GolfScore } from "../models/golfscore.model";
 
 container.register("IroundRepository", {
   useClass: RoundRepository,
@@ -25,7 +26,7 @@ export class RoundService {
     const Rounds: Round[] = await this.roundRepository.getAllRounds();
     return Rounds;
   }
-  public async createScore(score: Round): Promise<void> {
+  public async createScore(score: GolfScore): Promise<void> {
     await this.roundRepository.createScore(score);
     
   }

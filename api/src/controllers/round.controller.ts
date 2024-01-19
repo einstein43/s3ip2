@@ -31,11 +31,12 @@ export class RoundController {
 public async createScore(req: Request, res: Response): Promise<void> {
     try {
       const score = req.body;
+      console.log("controller score" + score);
       await this.roundService.createScore(score);
       res.status(200).send("controller success -> id: " + score.id);
     } catch (error) {
       console.error("Error creating score:", error);
-      res.status(500).send("Error creating score");
+      res.status(500).send("Error creating score in controller");
     }
   }
 

@@ -69,7 +69,7 @@ public async createScore(score: GolfScore): Promise<void> {
   
     } catch (error) {
       console.error("could not create score in repository");
-      throw new Error("Failed to create score");
+      throw new Error("Failed to create score in repository");
     }
   }
 
