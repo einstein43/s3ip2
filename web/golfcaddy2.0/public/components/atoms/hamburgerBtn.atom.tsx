@@ -27,6 +27,7 @@ export const HamburgerBtn = ({
                 isOpen && styles[`menu__state_open_${style}`]
             )}
             onClick={handleClick}
+            onKeyDown={handleClick}
         >
             <span className={styles.one}/>
             <span className={styles.two}/>
