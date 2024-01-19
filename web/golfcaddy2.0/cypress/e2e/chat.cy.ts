@@ -6,14 +6,14 @@ describe("ChatComponent E2E Test", () => {
     cy.wait(1000);
    
     // Type a message in the input field
-    cy.get('input[type="text"]').type("Hello, Cypress!");
+    cy.get('input[type="text"]').type("Cypress");
     cy.wait(1000);
     // Click the send button
     cy.get("button").contains("Send").click();
     cy.wait(1000);
     // Verify that the message is displayed
 
-    cy.get("message").should("be.visible");
+    cy.get("Cypress").should("be.visible");
 
     // Add more assertions as needed based on your application behavior
   });

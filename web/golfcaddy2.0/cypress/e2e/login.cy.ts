@@ -6,12 +6,12 @@ describe('Login functionality', () => {
       cy.visit('https://s3ip2.vercel.app'); 
   
       // Fill in login form
-      cy.get('input[name="ngf"]').type('12345'); 
+      cy.get('input[name="ngf"]').type('126'); 
       cy.get('input[name="password"]').type('password123'); 
       cy.get('button[type="submit"]').click();
-  
+  cy.wait(5000);
       // Check if login is successful
-      cy.url().should('include', '/profiel/12345');  
+      cy.url().should('include', '/profiel/126');  
     });
   });
   
