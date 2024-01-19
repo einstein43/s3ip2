@@ -13,8 +13,13 @@ jobs:
         uses: actions/checkout@v4
       - name: Dependancies
         run: npm ci --include=dev
-      - name: Run build
+      - name: Build app
         run: npm run build
       - name: Cypress
         run: npx cypress run
+        
+       
+        
+          
+           
       
