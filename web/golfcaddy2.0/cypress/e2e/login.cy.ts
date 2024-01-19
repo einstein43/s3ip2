@@ -3,7 +3,7 @@
 export {};
 describe('Login functionality', () => {
     it('should successfully log in a user', () => {
-      cy.visit('https://s3ip2.vercel.app'); 
+      cy.visit('http://localhost:3000'); 
   
       // Fill in login form
       cy.get('input[name="ngf"]').type('126'); 
@@ -11,7 +11,7 @@ describe('Login functionality', () => {
       cy.get('button[type="submit"]').click();
   cy.wait(5000);
       // Check if login is successful
-      cy.url().should('include', 'https://s3ip2.vercel.app/profiel/126').debug();;  
+      cy.url().should('include', 'http://localhost:3000/profiel/126').debug();;  
     });
   });
   

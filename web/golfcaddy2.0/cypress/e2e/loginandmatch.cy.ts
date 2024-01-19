@@ -10,7 +10,7 @@ describe('End-to-End Tests', () => {
     cy.url().should('include', '/profiel/126');
 
     // Go to the HoleNumberPage
-    cy.visit('https://s3ip2.vercel.app/wedstrijden/126/1/1/1');  
+    cy.visit('http://localhost:3000/wedstrijden/126/1/1/1');  
 
     // Assuming the input field has the class 'input' and the button has the class 'button'
     for (let i = 1; i <= 18; i++) {
