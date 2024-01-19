@@ -15,8 +15,6 @@ jobs:
         run: npm ci --include=dev
       - name: Build app
         run: npm run build
-      - name: Run app
-        run: npm run dev
       - name: Cypress
         run: npx cypress run
         
