@@ -1,5 +1,6 @@
 "use client";
 import ChatComponent from "@/public/components/molecules/ChatComponent";
+import MatchCard from "@/public/components/molecules/matchcard.molecule";
 import { Golfer } from "@/public/models/golfer.model";
 import React, { useEffect, useState } from "react";
 
@@ -29,7 +30,7 @@ export default function NgfNumber({
   useEffect(() => {
     console.log("useEffect");
     getGolfer();
-  }, []); // Empty dependency array to run the effect only once when the component mounts
+  }, []); 
 
   useEffect(() => {
     if (user) {
@@ -40,8 +41,9 @@ export default function NgfNumber({
 
   return (
     <div>
-      hello {user && user.name}
+      hello {user && user.name}, chat with other users!
       <ChatComponent />
+      <MatchCard></MatchCard>
     </div>
   );
 }

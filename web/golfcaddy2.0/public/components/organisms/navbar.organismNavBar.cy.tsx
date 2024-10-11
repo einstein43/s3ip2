@@ -1,5 +1,6 @@
 import React from 'react'
 import { NavBar } from './navbar.organism'
+export {};
 
 describe('<NavBar />', () => {
   it('renders', () => {

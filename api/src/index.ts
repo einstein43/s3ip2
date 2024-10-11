@@ -10,6 +10,9 @@ import { PrismaClient } from "@prisma/client";
 import { Golfer } from "./models/golfer.model";
 import { Round } from "./models/round.model";
 import { Flight } from "./models/flight.model";
+
+
+
 const prisma = new PrismaClient();
 
 const app = express();
@@ -38,7 +41,7 @@ const flightController = container.resolve(FlightController);
   /* GOLFER ENDPOINTS */
 }
 
-app.post("/register", async (req: Request, res: Response) => {
+app.post("/register", async (req, res) => {
   return await golferController.createGolfer(req, res);
 });
  
@@ -115,3 +118,4 @@ app.delete("flights/delete", async (req: Request, res: Response) => {
 });
 
 app.listen(3001, () => console.log("app listening on port 3001"));
+export default app;

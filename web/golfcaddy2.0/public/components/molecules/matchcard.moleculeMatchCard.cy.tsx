@@ -1,5 +1,6 @@
 import React from 'react'
 import MatchCard from './matchcard.molecule'
+export {};
 
 describe('<MatchCard />', () => {
   it('renders', () => {

@@ -115,14 +115,7 @@ export default function Home() {
     <div className={styles.wrapper_div}>
          <div id={styles.ngf_div}>
           <div id={styles.ngf_top}>
-            <label className={styles.label}>
-              quick login
-              <input
-                type="text"
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-              />
-            </label>
+           
           </div>
           {searchTerm && (
             <ul className={styles.golfers_list}>
@@ -139,7 +132,7 @@ export default function Home() {
 
       <div id={styles.register_div}>
       {registrationSuccess && (
-          <div className="success-message">User registered successfully!</div>
+          <div className="success-message"> logged in successfully</div>
         )}
         <div id={styles.logo}>
           <div id={styles.logo_svg}>

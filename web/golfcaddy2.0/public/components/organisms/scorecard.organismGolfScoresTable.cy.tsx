@@ -1,5 +1,6 @@
 import React from 'react'
 import GolfScoresTable from './scorecard.organism'
+export {};
 
 describe('<GolfScoresTable />', () => {
   it('renders', () => {

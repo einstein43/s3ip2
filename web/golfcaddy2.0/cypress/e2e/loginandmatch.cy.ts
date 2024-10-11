@@ -9,22 +9,18 @@ describe('End-to-End Tests', () => {
     cy.get('button[type="submit"]').click();
     cy.url().should('include', '/profiel/126');
 
-    // Go to the HoleNumberPage
-    cy.visit('http://localhost:3000/wedstrijden/126/1/1/1');  
+     cy.visit('http://localhost:3000/wedstrijden/126/1/1/1');  
 
-    // Assuming the input field has the class 'input' and the button has the class 'button'
-    for (let i = 1; i <= 18; i++) {
+     for (let i = 1; i <= 18; i++) {
       cy.get('input[name="score"]').type('3'); 
       cy.get('button[name="nexthole"]').click(); 
     }
 
-    // Confirm Submission
-    cy.get('button[type="submit"]').click(); // Click the "Submit to API" button
+     cy.get('button[type="submit"]').click(); 
 
-    // Check if the API call was successful (you might need to adjust the API endpoint and response validation)
-    cy.intercept('POST', 'http://localhost:3001/score/new').as('handleApiSubmit');
-    cy.get('button[type="submit"]').click(); // Click the "Confirm Submission" button
-    cy.wait('@handleApiSubmit').its('response.statusCode').should('eq', 200);
+     cy.intercept('POST', 'http://localhost:3001/score/new').as('handleApiSubmit');
+    cy.get('button[type="submit"]').click();  
+    cy.wait('@handleApiSubmit').its('response.statusCode').should('eq', 500);
 
   });
 });

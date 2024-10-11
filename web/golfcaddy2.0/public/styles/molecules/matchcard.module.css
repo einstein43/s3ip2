@@ -1,6 +1,8 @@
 #wrapper {
-  background-color: grey;
-  height: 150px;
+  padding-top: 25px;
+  padding-left: 25px;
+  background-color: rgb(216, 216, 216);
+ 
   border-radius: var(--border-radius);
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -11,6 +13,11 @@
   align-items: center;
   justify-content: center;
   margin-bottom: 15px;
+   
+}
+#totalscore {w
+  color: var(--color-primary);
+  font-weight: 600;
 }
 
 /* layout */

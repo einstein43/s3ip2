@@ -42,9 +42,7 @@ async function getNgf() {
 
       {/* Links */}
       <ul id={styles.linkContainer}>
-        <a className={styles.link} href={"/"}>
-          Home
-        </a>
+       
         <a className={styles.link} href={`/wedstrijden/${ngf}`} onClick={() => getNgf()}>
           Wedstrijden
         </a>
@@ -53,6 +51,9 @@ async function getNgf() {
         </a>
         <a className={styles.link} href={"/leaderboard"}>
           Leaderboard
+        </a>
+        <a className={styles.link} href={"/"}>
+         Logout
         </a>
       </ul>
 
@@ -68,8 +69,7 @@ async function getNgf() {
         >
           Help
         </Button>
-        <button onClick={() => handleLogout()}>Logout</button>
-      </div>
+       </div>
 
       {/* Hamburger button */}
       <div id={styles.hamburgerBtnWrap}>

@@ -8,133 +8,113 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-var __generator = (this && this.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (g && (g = 0, op[0] && (_ = 0)), _) try {
-            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [op[0] & 2, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-    }
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-var client_1 = require("@prisma/client");
-var prisma = new client_1.PrismaClient();
-var roundRepository = /** @class */ (function () {
-    function roundRepository() {
+const client_1 = require("@prisma/client");
+const prisma = new client_1.PrismaClient();
+class roundRepository {
+    constructor() { }
+    getAllRounds() {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const rounds = yield prisma.golf_scores.findMany({});
+                console.log("rounds retrieved");
+                return rounds;
+            }
+            catch (error) {
+                console.error("could not find rounds in repository");
+                throw new Error("Failed to retrieve rounds");
+            }
+        });
     }
-    roundRepository.prototype.getAllRounds = function () {
-        return __awaiter(this, void 0, void 0, function () {
-            var rounds, error_1;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        _a.trys.push([0, 2, , 3]);
-                        return [4 /*yield*/, prisma.golf_scores.findMany({})];
-                    case 1:
-                        rounds = _a.sent();
-                        console.log("rounds retrieved");
-                        return [2 /*return*/, rounds];
-                    case 2:
-                        error_1 = _a.sent();
-                        console.error("could not find rounds in repository");
-                        throw new Error("Failed to retrieve rounds");
-                    case 3: return [2 /*return*/];
-                }
-            });
+    getRoundById(id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                console.log(id);
+                const round = yield prisma.golf_rounds.findUnique({
+                    where: {
+                        id: parseInt(id),
+                    },
+                });
+                console.log("round retrieved with id" + id);
+                return round;
+            }
+            catch (error) {
+                console.error("could not find rounds in repository");
+                throw new Error("Failed to retrieve rounds");
+            }
         });
-    };
-    roundRepository.prototype.getRoundById = function (id) {
-        return __awaiter(this, void 0, void 0, function () {
-            var round, error_2;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        _a.trys.push([0, 2, , 3]);
-                        console.log(id);
-                        return [4 /*yield*/, prisma.golf_rounds.findUnique({
-                                where: {
-                                    id: parseInt(id),
-                                },
-                            })];
-                    case 1:
-                        round = _a.sent();
-                        console.log("round retrieved with id" + id);
-                        return [2 /*return*/, round];
-                    case 2:
-                        error_2 = _a.sent();
-                        console.error("could not find rounds in repository");
-                        throw new Error("Failed to retrieve rounds");
-                    case 3: return [2 /*return*/];
-                }
-            });
+    }
+    createScore(score) {
+        var _a;
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                if (!score.golf_round_id)
+                    throw new Error("No score provided");
+                if (!score.golfer_id)
+                    throw new Error("No golfers provided");
+                console.log("score created");
+                const newScore = yield prisma.golf_scores.create({
+                    data: {
+                        id: (_a = score.golf_round_id) !== null && _a !== void 0 ? _a : undefined,
+                        golfer_id: score.golfer_id,
+                        hole1: score.hole1,
+                        hole2: score.hole2,
+                        hole3: score.hole3,
+                        hole4: score.hole4,
+                        hole5: score.hole5,
+                        hole6: score.hole6,
+                        hole7: score.hole7,
+                        hole8: score.hole8,
+                        hole9: score.hole9,
+                        hole10: score.hole10,
+                        hole11: score.hole11,
+                        hole12: score.hole12,
+                        hole13: score.hole13,
+                        hole14: score.hole14,
+                        hole15: score.hole15,
+                        hole16: score.hole16,
+                        hole17: score.hole17,
+                        hole18: score.hole18,
+                    },
+                });
+            }
+            catch (error) {
+                console.error("could not create score in repository");
+                throw new Error("Failed to create score in repository");
+            }
         });
-    };
-    roundRepository.prototype.createRound = function (round) {
-        return __awaiter(this, void 0, void 0, function () {
-            var newRound, error_3;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        _a.trys.push([0, 2, , 3]);
-                        if (!round.id)
-                            throw new Error("No round provided");
-                        if (!round.golfer_id)
-                            throw new Error("No golfers provided");
-                        console.log("round created");
-                        return [4 /*yield*/, prisma.golf_rounds.create({
-                                data: {
-                                    id: round.id,
-                                    golfer_id: round.golfer_id,
-                                    round_id: round.round_id,
-                                    golfers: round.golfers,
-                                    golf_scores: round.golf_scores,
-                                },
-                            })];
-                    case 1:
-                        newRound = _a.sent();
-                        return [3 /*break*/, 3];
-                    case 2:
-                        error_3 = _a.sent();
-                        console.error("could not create round in repository");
-                        throw new Error("Failed to create round");
-                    case 3: return [2 /*return*/];
-                }
-            });
+    }
+    createRound(round) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                if (!round.id)
+                    throw new Error("No round provided");
+                if (!round.golfer_id)
+                    throw new Error("No golfers provided");
+                console.log("round created");
+                const newRound = yield prisma.golf_rounds.create({
+                    data: {
+                        id: round.id,
+                        golfer_id: round.golfer_id,
+                        round_id: round.round_id,
+                        golfers: round.golfers,
+                        golf_scores: round.golf_scores,
+                    },
+                });
+            }
+            catch (error) {
+                console.error("could not create round in repository");
+                throw new Error("Failed to create round");
+            }
         });
-    };
-    roundRepository.prototype.updateRoundById = function (id, round) {
-        return __awaiter(this, void 0, void 0, function () {
-            return __generator(this, function (_a) {
-                return [2 /*return*/];
-            });
+    }
+    updateRoundById(id, round) {
+        return __awaiter(this, void 0, void 0, function* () {
         });
-    };
-    roundRepository.prototype.deleteRoundById = function (id) {
-        return __awaiter(this, void 0, void 0, function () {
-            return __generator(this, function (_a) {
-                return [2 /*return*/];
-            });
+    }
+    deleteRoundById(id) {
+        return __awaiter(this, void 0, void 0, function* () {
         });
-    };
-    return roundRepository;
-}());
+    }
+}
 exports.default = roundRepository;

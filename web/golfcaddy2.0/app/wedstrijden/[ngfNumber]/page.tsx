@@ -30,33 +30,31 @@ export default function MatchPage({
   }, []);
 
   return (
-    <div>
+    <div className={styles.wrapper}>
+      <div id={styles.block}>
+
+      
       <div>
-        <h1>hello {user && user.name}</h1>
+        <h1>Hallo {user && user.name}</h1>
       </div>
       <div>
-        <h1>you are in match {user && user.currentmatch_id}</h1>{" "}
+        <h1>U speelt in Wedstrijd {user && user.currentmatch_id}</h1>{" "}
+        
+      </div>
+      <div>
+        <h1>U bend ingedeeld in flight  {user && user.currentflight_id}</h1>
         <a
           href={`/wedstrijden/${user && user.ngf}/${
             user && user.currentmatch_id
-          }`}
+          }/${user && user.currentflight_id}/1`}
         >
-          Go to match
-        </a>
-      </div>
-      <div>
-        <h1>you are in flight {user && user.currentflight_id}</h1>
-        <a
-          href={`/wedstrijden/${user && user.ngf}/${
-            user && user.currentmatch_id
-          }/${user && user.currentflight_id}`}
-        >
-          {" "}
-          Go to Flight
+          
+          Start wedstrijd
         </a>
       </div>
 
-      <div></div>
+       
+      </div>
     </div>
   );
 }

@@ -4,6 +4,7 @@ import { container, inject, injectable } from "tsyringe";
 import { Golfer } from "../models/golfer.model";
 import { GolferService } from "../services/golfer.service";
 import bcrypt from "bcrypt";
+
 container.register("IGolferService", {
   useClass: GolferService,
 });
@@ -19,6 +20,9 @@ export class GolferController {
     this.getGolferByNgf = this.getGolferByNgf.bind(this);
     this.login = this.login.bind(this);
   }
+
+
+
 
   public async login(req: Request, res: Response) {
     try {
@@ -75,7 +79,7 @@ export class GolferController {
       return golfer;
     } catch (error) {
       console.error(error);
-      res.status(500).send("error in controller");
+       
     }
   }
 

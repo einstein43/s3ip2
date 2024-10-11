@@ -19,7 +19,7 @@ export default function Leaderboard() {
   useEffect(() => {
     const fetchGolfer = async () => {
       try {
-        const response = await fetch(`http://localhost:3001/golfer/all`); // Assuming this is your API endpoint
+        const response = await fetch(`http://localhost:3001/golfer/all`);
         const data = await response.json();
         setGolfers(data);
       } catch (error) {
@@ -32,17 +32,26 @@ export default function Leaderboard() {
 
   // Function to sort golfers by handicap
   const sortGolfersByHandicap = () => {
-    const sortedGolfers = [...golfers].sort((a, b) => a.handicap - b.handicap);
+    const filteredGolfers = golfers.filter(golfer => golfer.name && golfer.name.trim() !== ''); // Filter out golfers with empty names
+    const sortedGolfers = [...filteredGolfers].sort((a, b) => a.handicap - b.handicap);
     setGolfers(sortedGolfers);
   };
 
   useEffect(() => {
-    sortGolfersByHandicap();
+    if (golfers.length > 0) {
+      sortGolfersByHandicap();
+    }
   }, [golfers]);
+
+  // Check if golfers array is empty before rendering
+  if (golfers.length === 0) {
+    return <p>Loading...</p>; // You can replace this with a loading indicator or any other appropriate message
+  }
 
   const firstThree = golfers.slice(0, 3);
   const rest = golfers.slice(3);
 
+  
   return (
     <div>
       <h1 className={styles.title}>Leaderboard</h1>

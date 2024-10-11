@@ -1,5 +1,6 @@
 import React from 'react'
 import Leaderboard from './leaderboard.template'
+export {};
 
 describe('<Leaderboard />', () => {
   it('renders', () => {

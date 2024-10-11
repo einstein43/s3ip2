@@ -1,6 +1,6 @@
 import React from 'react'
 import HamburgerBtn from './hamburgerBtn.atom'
-
+export {};
 describe('<HamburgerBtn />', () => {
   it('renders', () => {
     // see: https://on.cypress.io/mounting-react

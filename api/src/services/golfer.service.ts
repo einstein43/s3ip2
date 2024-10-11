@@ -1,9 +1,11 @@
 // import { IGolferService } from "../interfaces/golfer.interface";
 // import { IGolferRepository } from "../interfaces/golfer.interface";
+import "reflect-metadata";
 import { container, inject, injectable } from "tsyringe";
 import { Golfer } from "../models/golfer.model";
 import GolferRepository from "../repositories/golfer.repository";
 import bcrypt from "bcrypt";
+
 container.register("IGolferRepository", {
   useClass: GolferRepository,
 });
@@ -21,20 +23,28 @@ export class GolferService {
     this.getGolferByNgf = this.getGolferByNgf.bind(this);
     this.login = this.login.bind(this);
   }
-
-  public async login(ngf: number, password: string): Promise<string> {
+// GolferService login method
+public async login(ngf: number, password: string): Promise<string> {
+  try {
     const storedHashedPassword = await this.golferRepository.login(ngf);
-    const isPasswordValid = await bcrypt.compare(
-      password,
-      storedHashedPassword
-    );
-    console.log("service: password valid: " + isPasswordValid);
+
+    if (!storedHashedPassword) {
+      return "password incorrect";  
+    }
+
+    const isPasswordValid = await bcrypt.compare(password, storedHashedPassword);
+
     if (isPasswordValid) {
       return "login successful";
     } else {
       return "password incorrect";
     }
+  } catch (error) {
+    console.error("Error in login:", error);
+    return "error in login";
   }
+}
+
 
   public async createGolfer(ngf: number, password: string): Promise<void> {
     const hashedPassword = await bcrypt.hash(password, 10);

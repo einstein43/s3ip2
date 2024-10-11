@@ -96,8 +96,7 @@ export default class GolferRepository {
   public async updateGolferById(id: number, golfer: Golfer): Promise<void> {
     try {
       if (!golfer.name) throw new Error("No golfer provided");
-      if (!golfer.golf_rounds) throw new Error("No golf rounds provided");
-      if (!golfer.id) throw new Error("No id provided");
+       if (!golfer.id) throw new Error("No id provided");
 
       const updatedGolfer = await prisma.golfers.update({
         where: {
@@ -110,7 +109,7 @@ export default class GolferRepository {
           age: golfer.age || 0,
           homecourse: golfer.homecourse || "null",
           country: golfer.country || "null",
-          golf_rounds: {},
+           
         },
       });
       console.log("repository: golfer updated");

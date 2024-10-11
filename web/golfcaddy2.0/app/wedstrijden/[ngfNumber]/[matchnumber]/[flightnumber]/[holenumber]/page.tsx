@@ -2,6 +2,7 @@
 import { useState, useEffect, ChangeEvent, FormEvent } from 'react';
 import styles from './page.module.css'; // Replace with the actual module file path
 import React from 'react';
+import { set } from 'cypress/types/lodash';
  
 
 interface Round {
@@ -34,9 +35,11 @@ export default function HoleNumberPage( ) {
   const [scores, setScores] = useState(Array(18).fill(''));
   const [currentScore, setCurrentScore] = useState('');
   const [isSubmissionStep1, setIsSubmissionStep1] = useState(true);
+  const [disableButton, setDisableButton] = useState(false);
 
   const handleScoreChange = (e: ChangeEvent<HTMLInputElement>) => {
     setCurrentScore(e.target.value);
+     
   };
 
   const handleScoreSubmit = (e: FormEvent<HTMLFormElement>) => {
@@ -57,7 +60,7 @@ export default function HoleNumberPage( ) {
 
     // Call the onSubmit callback with the scores when all holes are filled
     if (hole === 18) {
-       
+       setDisableButton(true);
     }
   };
 
@@ -120,6 +123,8 @@ export default function HoleNumberPage( ) {
 
       // Reset to the initial step after submission
       setIsSubmissionStep1(true);
+      window.alert('Scores succesvol verstuurd');
+          window.location.href = `/profiel/${golferDetails.ngf}`;
     }
   };
 
@@ -142,7 +147,7 @@ export default function HoleNumberPage( ) {
             className={styles.input}
           />
         </label>
-        <button name="nexthole" className={styles.button} disabled={!isSubmissionStep1}>
+        <button name="nexthole" className={styles.button} disabled={disableButton}>
           Next Hole
         </button>
       </form>
@@ -161,7 +166,7 @@ export default function HoleNumberPage( ) {
         )}
         {hole === 18 && scores[17] && (
           <button type='submit' onClick={handleApiSubmit} className={styles.button}>
-            {isSubmissionStep1 ? 'Submit to API' : 'Confirm Submission'}
+            {isSubmissionStep1 ? 'Submit scores' : 'Confirm Submission'}
           </button>
         )}
       </>
